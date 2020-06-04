@@ -11,6 +11,13 @@ var app = express();
 var Image = require('./mysql-functions/sequelize')
 var updateImagesDatabase = require('./mysql-functions/updateImagesDatabase')
 
+//Logger
+const logger = (req, res, next) => {
+  console.log(`${new Date().toUTCString()} - ${req.method} ${req.path} - ${req.ip}`);
+  next();
+}
+app.use(logger)
+
 app.use('/images', express.static(imagesDir));
 app.use('/', express.static(serverDir));
 
