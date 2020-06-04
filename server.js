@@ -8,8 +8,8 @@ var serverDir = path.join(__dirname, 'dist');
 var express = require('express');
 var app = express();
 
-var Image = require('./mysql/sequelize')
-var updateImagesDatabase = require('./mysql/updateImagesDatabase')
+var Image = require('./mysql-functions/sequelize')
+var updateImagesDatabase = require('./mysql-functions/updateImagesDatabase')
 
 app.use('/images', express.static(imagesDir));
 app.use('/', express.static(serverDir));
