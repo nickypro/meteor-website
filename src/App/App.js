@@ -19,7 +19,12 @@ const App = () => {
 
   return (
     <div>
-      App Content
+      <p>Meteor Images</p>
+      {
+        images.map((item, index) => (
+          <img key={index} src={`/images${item.filePath}`}/>
+        ))
+      }
     </div>
   )
 }
