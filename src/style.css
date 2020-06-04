@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
+
+* {
+  color: white;
+  font-family: 'Ropa Sans', sans-serif;
+}
+
+html { 
+  background-color: #031426;
+}
