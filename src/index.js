@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App/App'
+
 ReactDOM.render(
   <h1>
-    Hello Parcel React Project
+    <App/>
   </h1>,
   document.getElementById('root')
 );

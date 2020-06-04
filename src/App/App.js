@@ -1,6 +1,11 @@
+import React from 'react'
 
-const Data = () => {
+const App = () => {
   return (
-    <div>Hello World</div>
+    <div>
+      App Content
+    </div>
   )
 }
+
+export default App
