@@ -29,6 +29,7 @@
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-page-scroller": "^2.0.7-beta",
     "sequelize": "^5.21.11"
   }
 }
