@@ -41,11 +41,6 @@ const App = () => {
       </div>
       <Card style={cardStyling}>
         <DatePicker value={selectedDate} onChange={handleDateChange}/>
-        <button 
-          onClick={fetchImages} 
-          className="BrainhubCarousel__arrows BrainhubCarousel__arrowRight"
-          style={{width: "2rem", height: "2rem", margin: "0px 1rem", position: "relative"}}
-        ><span>next</span></button>
       </Card>
       <div className="list-of-images">
         <ImageCarousel images={images}/>
