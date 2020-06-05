@@ -19,7 +19,9 @@ const App = () => {
   const [selectedDate, handleDateChange] = React.useState(new Date("2020-04-10T00:00:00.000Z"));
 
   const fetchImages = async () => {
+    if (!isValidDate(selectedDate)) return console.log("Non-valid date, skipping fetch");
     const when  = selectedDate.toISOString() 
+
     const response  = await axios.get(`${window.location.origin}/api/images-by-date?when=${when}`)
     if ( !(response.status==200) ){
       return console.log("ERROR: could not fetch image info: \n", response)
@@ -30,7 +32,7 @@ const App = () => {
 
   useEffect(() => {
     fetchImages()
-  }, [])
+  }, [selectedDate])
 
   return (
     <div className="root__content">
