@@ -9,3 +9,8 @@ html, body {
   background-color: #031426;
   margin: 0px;
 }
+
+#root {
+  background-image: url('background1.jpg');
+  background-size: cover;
+}
