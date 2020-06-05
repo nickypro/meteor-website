@@ -16,7 +16,7 @@ function isValidDate(d) {
 
 const App = () => {
   const [images, setImages] = React.useState([])
-  const [selectedDate, handleDateChange] = React.useState(new Date("2020-04-10T00:00:00.000Z"));
+  const [selectedDate, handleDateChange] = React.useState(new Date("2020-04-06T02:00:00.000Z"));
 
   const fetchImages = async () => {
     if (!isValidDate(selectedDate)) return console.log("Non-valid date, skipping fetch");
