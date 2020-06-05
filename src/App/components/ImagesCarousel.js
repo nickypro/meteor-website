@@ -28,7 +28,6 @@ const ImageCarousel = (props) => (
 const textMarginStyling = {margin: "1rem 2rem 3rem"}
 
 const cardStyling = {
-  width: "80%", 
   maxWidth: "800px", 
   margin: "2rem",
   background: "rgb(34, 54, 76)",
