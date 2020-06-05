@@ -28,15 +28,30 @@ const App = () => {
   }, [])
 
   return (
-    <div>
-      <p>Meteor Images</p>
-      {
-        images.map((item, index) => (
-          <img key={index} src={`/images${item.filePath}`}/>
-        ))
-      }
+    <div className="root__content">
+      <div>
+        <h1 style={{textAlign: "center"}}>Meteor Images</h1>
+      </div>
+      <Card style={cardStyling}>
+        <DatePicker value={new Date()} onChange={() => {}}/>
+        <Button> > </Button>
+      </Card>
+      <div className="list-of-images">
+        <ImageCarousel images={images}/>
+      </div>
     </div>
   )
 }
+
+const cardStyling = {
+  height: "4rem",
+  padding: "1rem 0.5rem 1rem 2rem", 
+  margin: "0.5rem",
+  background: "rgb(34, 54, 76)",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center"
+}
+
 
 export default App
