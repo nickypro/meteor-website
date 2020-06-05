@@ -51,7 +51,7 @@ const App = () => {
 
 const cardStyling = {
   height: "4rem",
-  padding: "1rem 0.5rem 1rem 2rem", 
+  padding: "1rem 2rem", 
   margin: "0.5rem",
   background: "rgb(34, 54, 76)",
   display: "flex",
