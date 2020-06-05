@@ -9,8 +9,9 @@ const App = () => {
     const response  = await axios.get(`${window.location.origin}/api/images-by-date?when=${when}`)
     if ( !(response.status==200) ){
       return console.log("ERROR: could not fetch image info: \n", response)
+    } else {
+      setImages(response.data)
     }
-    setImages(response.data)
   }
 
   useEffect(() => {
