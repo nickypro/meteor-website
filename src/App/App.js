@@ -10,6 +10,10 @@ import DatePicker from './components/DatePicker'
 
 import { FormHelperText, Button } from '@material-ui/core';
 
+function isValidDate(d) {
+  return d instanceof Date && !isNaN(d);
+}
+
 const App = () => {
   const [images, setImages] = React.useState([])
   const [selectedDate, handleDateChange] = React.useState(new Date("2020-04-10T00:00:00.000Z"));
