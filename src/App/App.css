@@ -1,0 +1,44 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.root__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-of-images {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meteor-image {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.MuiPaper-root {
+  background: rgb(34, 54, 76); 
+}
+
+.BrainhubCarousel__arrows {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.BrainhubCarousel__arrowLeft {
+  left: 0.5rem;
+}
+
+.BrainhubCarousel__arrowRight {
+  right: 0.5rem;
+}

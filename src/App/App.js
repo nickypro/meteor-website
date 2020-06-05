@@ -1,6 +1,9 @@
 import React, {useEffect} from 'react'
 import axios from 'axios';
 
+import "@brainhubeu/react-carousel/lib/style.css";
+import './App.css'
+
 const App = () => {
   const [images, setImages] = React.useState([])
 
