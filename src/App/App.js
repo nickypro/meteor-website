@@ -12,9 +12,10 @@ import { FormHelperText, Button } from '@material-ui/core';
 
 const App = () => {
   const [images, setImages] = React.useState([])
+  const [selectedDate, handleDateChange] = React.useState(new Date("2020-04-10T00:00:00.000Z"));
 
   const fetchImages = async () => {
-    const when  = new Date().toISOString() 
+    const when  = selectedDate.toISOString() 
     const response  = await axios.get(`${window.location.origin}/api/images-by-date?when=${when}`)
     if ( !(response.status==200) ){
       return console.log("ERROR: could not fetch image info: \n", response)
@@ -33,8 +34,12 @@ const App = () => {
         <h1 style={{textAlign: "center"}}>Meteor Images</h1>
       </div>
       <Card style={cardStyling}>
-        <DatePicker value={new Date()} onChange={() => {}}/>
-        <Button> > </Button>
+        <DatePicker value={selectedDate} onChange={handleDateChange}/>
+        <button 
+          onClick={fetchImages} 
+          className="BrainhubCarousel__arrows BrainhubCarousel__arrowRight"
+          style={{width: "2rem", height: "2rem", margin: "0px 1rem", position: "relative"}}
+        ><span>next</span></button>
       </Card>
       <div className="list-of-images">
         <ImageCarousel images={images}/>
