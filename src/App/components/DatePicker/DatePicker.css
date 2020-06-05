@@ -1,0 +1,28 @@
+.datePicker > div {
+  background-color: white;
+  padding: 0.3rem 0rem 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.datePicker > div::after, .datePicker > div::before {
+  left: 0.2rem;
+  right: 0.2rem;
+  opacity: 0.4;
+}
+
+#date-picker-dialog-helper-text {
+  position: absolute;
+  top: 2.5rem;
+}
+
+.datePickerLabel {
+  position: absolute;
+  top: 0.7rem;
+  left: 6.5rem;
+  z-index: 1;
+  color: #777;
+  pointer-events: none;
+}
+/*# sourceMappingURL=DatePicker.css.map */
