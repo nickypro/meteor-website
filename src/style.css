@@ -8,6 +8,8 @@
 html, body { 
   background-color: #031426;
   margin: 0px;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 #root {
