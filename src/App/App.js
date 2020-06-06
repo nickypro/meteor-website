@@ -1,7 +1,10 @@
 import React, {useEffect} from 'react'
 import axios from 'axios';
 
-import "@brainhubeu/react-carousel/lib/style.css";
+import ReactPageScroller from 'react-page-scroller'
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import './App.css'
 
 import Card from '@material-ui/core/Card'
@@ -22,11 +25,12 @@ const App = () => {
     if (!isValidDate(selectedDate)) return console.log("Non-valid date, skipping fetch");
     const when  = selectedDate.toISOString() 
 
-    const response  = await axios.get(`${window.location.origin}/api/images-by-date?when=${when}`)
+    const response  = await axios.get(`${window.location.origin}/api/images-by-date?when=${when}&number=`)
     if ( !(response.status==200) ){
       return console.log("ERROR: could not fetch image info: \n", response)
     } else {
-      setImages(response.data)
+      const list = response.data.sort((date1, date2) => Number(date1) - Number(date2))
+      setImages(list)
     }
   }
 
@@ -35,10 +39,11 @@ const App = () => {
   }, [selectedDate])
 
   return (
+  <ReactPageScroller animationTimer={500}>
     <div className="root__content">
-      <div>
-        <h1 style={{textAlign: "center"}}>Meteor Images</h1>
-      </div>
+      <h1 style={{textAlign: "center", fontSize: "4rem"}}>Meteor Images</h1>
+    </div>
+    <div className="root__content">
       <Card style={cardStyling}>
         <DatePicker value={selectedDate} onChange={handleDateChange}/>
       </Card>
@@ -46,6 +51,7 @@ const App = () => {
         <ImageCarousel images={images}/>
       </div>
     </div>
+  </ReactPageScroller>
   )
 }
 

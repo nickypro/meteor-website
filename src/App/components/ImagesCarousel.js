@@ -1,35 +1,58 @@
 import React from 'react';
 import Card from '@material-ui/core/Card'
-import Carousel from '@brainhubeu/react-carousel'
+
+import Carousel from "react-slick"; 
+
+import dateFormat from 'dateformat'
+
+const options = {
+  dots: true,
+  speed: 200,
+  infinite: false,
+  centerMode: true,
+  focusOnSelect: true,
+  lazyLoad: "progressive",
+  edgeFriction: 0,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  style: {width: "100%", maxWidth: "500px", overflowX: "show"}
+}
 
 const ImageCarousel = (props) => (
-  <Carousel dots arrows slidesPerPage={2} centered clickToChange animationSpeed={200}>
+  <Carousel {...options} >
     {props.images.map((item, index) => {
       const path = `${window.location.origin}/images${item.filePath}` 
       return (
+      <div>
+      <div style={{display: "flex", flexDirection: "column", margin: "1rem"}}>
+        <div style={{fontSize: "1.5rem", display: "flex", justifyContent: "space-between"}}>
+          <span style={{textAlign: "left" }}> {dateFormat(item.date, "d mmm yyyy")} </span>
+          <span style={{textAlign: "right"}}> {dateFormat(item.date, "hh:MM:ss")} </span>
+        </div>
         <Card style={cardStyling}>
-        <img className="meteor-image" key={index} src={path}/>
+        <a href={path}>
+          <img className="meteor-image" key={index} src={path}/>
+        </a>
         <div style={textMarginStyling}>
-          <h2>Meteor Image</h2>
+          <h2 style={{textAlign: "center"}}>Meteor Image</h2>
           <ul>
-            <li> Taken  : {item.date}   </li>
-            <li> Camera : {item.camera} </li>
-            <li> info   : meteor        </li>
-            <li> link   : <a href={path}> {item.filePath} </a></li>
+            <li> Cam  : {item.camera} </li>
+            <li> info : meteor     </li>
           </ul>
         </div>
         <br/>
         </Card>
+      </div>
+      </div>
       )}
     )}
   </Carousel>
 );
 
-const textMarginStyling = {margin: "1rem 2rem 3rem"}
+const textMarginStyling = {width: "80%", margin: "0px auto"}
 
 const cardStyling = {
-  maxWidth: "800px", 
-  margin: "2rem",
+  maxWidth: "80vw",
   background: "rgb(34, 54, 76)",
 }
 
