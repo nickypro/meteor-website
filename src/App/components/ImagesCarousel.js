@@ -17,11 +17,24 @@ const ImageCarousel = (props) => {
     edgeFriction: 0,
     slidesToShow: 1,
     slidesToScroll: 1,
+    initialSlide: 1,
     style: {width: "100%", maxWidth: "500px", overflowX: "show"},
   }
 
   return (
   <Carousel ref={carousel => props.setCarouselRef(carousel)} {...carouselOptions} >
+    
+    <div>
+    <div className="center-flex">
+      <Card style={cardStyling}>
+        <button style={buttonStyling} onClick={props.getEarlier}>
+          Load Earlier
+        </button>
+      </Card>
+    </div>
+    </div>
+
+    {/* List meteor images */}
     {props.images.map((item, index) => {
       const path = `${window.location.origin}/images${item.filePath}` 
       return (
@@ -51,6 +64,16 @@ const ImageCarousel = (props) => {
       </div>
       )}
     )}
+    {/* End of Meteor Image List */}
+    <div>
+    <div className="center-flex">
+      <Card style={cardStyling}>
+        <button style={buttonStyling} onClick={props.getLater}>
+          Load Later
+        </button>
+      </Card>
+    </div>
+    </div>
   </Carousel>
 )};
 
@@ -59,6 +82,12 @@ const textMarginStyling = {width: "80%", margin: "0px auto"}
 const cardStyling = {
   maxWidth: "80vw",
   background: "rgb(34, 54, 76)",
+}
+
+const buttonStyling = {
+  margin: "2rem 3rem", 
+  background: "rgba(0, 0, 0, 0.2)", 
+  border: "none"
 }
 
 export default ImageCarousel;
