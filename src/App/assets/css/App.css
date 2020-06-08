@@ -40,3 +40,13 @@
   justify-content: center;
   height: 100%;
 }
+
+.scroll-down-icon {
+  font-size: 3rem;
+  transform: scaleX(3) scaleY(2);
+  cursor: pointer;
+}
+
+.scroll-down-icon:hover {
+  transform: scaleX(3.1) scaleY(2.1);
+}
