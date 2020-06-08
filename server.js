@@ -26,16 +26,30 @@ updateImagesDatabase(__dirname, "/images")
 
 //handle requests looking for a certain asteroid /images-by-date?when=X&number=10
 app.get('/api/images-by-date', async (req, res) => { 
-    const when   = req.query.when   ? req.query.when   : new Date()
+    let time = new Date();
+    let flag = "";
+
+    if (req.query.when) {
+      time = req.query.when
+    }   
+    if (req.query.before) {
+      time = req.query.before
+      flag = "BEFORE"
+    }   
+    if (req.query.after) {
+      time = req.query.after
+      flag = "AFTER"
+    }   
+    
     const number = req.query.number ? req.query.number : 8
-    console.log(when)
+    console.log(time, flag)
 
     //look through database for the closest 
-    const listOfImages = await Image.findByClosestTime( when , number )
+    const listOfImages = await Image.findByClosestTime( time , number , flag )
     if (!listOfImages) {
       return res.send("Could not get data") 
     }
-    console.log(`Found ${listOfImages[0].length} images closest to ${when}`)
+    console.log(`Found ${listOfImages[0].length} images closest to ${time}`)
     res.json(listOfImages[0])
 })  
 
