@@ -1,3 +1,15 @@
+.slick-carousel {
+  width: 100%;
+  max-width: 500px; 
+  overflow-x: show;
+}
+
+@media screen and (max-width: 500px) {
+  .slick-carousel {
+    max-width: 350px;
+  }
+}
+
 .slick-list {
   overflow: visible;
 }

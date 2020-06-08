@@ -18,7 +18,7 @@ const ImageCarousel = (props) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     initialSlide: 1,
-    style: {width: "100%", maxWidth: "500px", overflowX: "show"},
+    className: "slick-carousel",
   }
 
   return (
