@@ -6,13 +6,22 @@
 }
 
 html, body { 
-  background-color: #031426;
   margin: 0px;
   max-width: 100%;
   overflow-x: hidden;
 }
 
-#root {
-  background-image: url('background1.jpg');
+.background {
+  background-color: #031426;
   background-size: cover;
+  background-image: url('./background1.jpg');
+  background-position: 50% 0%;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 }

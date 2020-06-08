@@ -11,8 +11,8 @@ import DatePicker from './components/DatePicker'
 
 import { FormHelperText, Button } from '@material-ui/core';
 
-function isValidDate(d) {
-  return d instanceof Date && !isNaN(d);
+function Background(props) {
+  return <div className="background"/>
 }
 
 const App = () => {
@@ -38,6 +38,7 @@ const App = () => {
 
   return (
   <main>
+    <Background />
     <div className="root__content">
       <h1 style={{textAlign: "center", fontSize: "4rem"}}>Meteor Images</h1>
     </div>
