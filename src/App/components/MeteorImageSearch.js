@@ -24,17 +24,36 @@ const MeteorImageSearch = (props) => {
   const [selectedDate, handleDateChange] = React.useState(new Date("2020-04-06T02:00:00.000Z"));
   const [carouselRef, setCarouselRef] = React.useState();
 
-  const fetchImages = async () => {
-    if (!isValidDate(selectedDate)) return console.log("Non-valid date, skipping fetch");
-    const when  = selectedDate.toISOString() 
+  const fetchImages = async (flag) => {
+    let query = ""
+    
+    switch (flag) {
+      case "EARLIER":
+        query = `before=${images.minDate}`
+        break;
+      case "LATER":
+        query = `after=${images.maxDate}`
+        break;
+      default:
+        if ( isValidDate(selectedDate) ) {
+          query = `when=${selectedDate.toISOString()}` 
+        }
+        break;
+    }
+    
+    if (!query || query.length == 0) {
+      return console.log("Non-valid date, skipping fetch");
+    }
 
-    const response  = await axios.get(`${window.location.origin}/api/images-by-date?when=${when}`)
+    const response  = await axios.get(`${window.location.origin}/api/images-by-date?${query}`)
     if ( !(response.status==200) ){
       return console.log("ERROR: could not fetch image info: \n", response)
     } else {
       const list = response.data.sort((img1, img2) => Number(new Date(img1.date)) - Number(new Date(img2.date)) )
       list.minDate = list[0].date
       list.maxDate = list[list.length-1].date
+      console.log("min date: ", list.minDate)
+      console.log("max date: ", list.maxDate)
       setImages(list)
     }
   }
@@ -70,7 +89,12 @@ const MeteorImageSearch = (props) => {
       </Card>
       
       <div className="list-of-images">
-        <ImageCarousel images={images} setCarouselRef={setCarouselRef}/>
+        <ImageCarousel 
+          images={images} 
+          setCarouselRef={setCarouselRef} 
+          getEarlier={() => fetchImages("EARLIER")}
+          getLater={() => fetchImages("LATER")}
+        />
       </div>
     </div>
   )
