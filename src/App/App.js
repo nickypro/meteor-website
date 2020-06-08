@@ -20,9 +20,7 @@ const App = () => {
     <div className="root__content">
       <h1 style={{textAlign: "center", fontSize: "4rem"}}>Meteor Images</h1>
       <ScrollLink to="meteor-images" smooth={true} duration={500}>
-        <h1 className="scroll-down-icon">
-          &#709;
-        </h1>
+        <h1 className="scroll-down-icon"> &#709; </h1>
       </ScrollLink>
     </div>
     <Element name="meteor-images">
