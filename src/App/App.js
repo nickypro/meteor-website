@@ -1,8 +1,6 @@
 import React, {useEffect} from 'react'
 import axios from 'axios';
 
-import ReactPageScroller from 'react-page-scroller'
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './App.css'
@@ -39,7 +37,7 @@ const App = () => {
   }, [selectedDate])
 
   return (
-  <ReactPageScroller animationTimer={500}>
+  <main>
     <div className="root__content">
       <h1 style={{textAlign: "center", fontSize: "4rem"}}>Meteor Images</h1>
     </div>
@@ -51,7 +49,7 @@ const App = () => {
         <ImageCarousel images={images}/>
       </div>
     </div>
-  </ReactPageScroller>
+  </main>
   )
 }
 
