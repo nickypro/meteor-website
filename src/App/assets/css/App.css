@@ -32,17 +32,3 @@
 .MuiPaper-root {
   background: rgb(34, 54, 76); 
 }
-
-.BrainhubCarousel__arrows {
-  position: absolute;
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.BrainhubCarousel__arrowLeft {
-  left: 0.5rem;
-}
-
-.BrainhubCarousel__arrowRight {
-  right: 0.5rem;
-}
