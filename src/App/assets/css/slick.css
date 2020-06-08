@@ -39,3 +39,16 @@
   display: flex;
   align-items: center;
 }
+
+.slick-card-button {
+  margin: 1rem;
+  padding:  1rem 2rem;
+  background: rgba(0, 0, 0, 0.2); 
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.slick-card-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

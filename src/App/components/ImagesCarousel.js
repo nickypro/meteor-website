@@ -27,7 +27,7 @@ const ImageCarousel = (props) => {
     <div>
     <div className="center-flex">
       <Card style={cardStyling}>
-        <button style={buttonStyling} onClick={props.getEarlier}>
+        <button className="slick-card-button" onClick={props.getEarlier}>
           Load Earlier
         </button>
       </Card>
@@ -68,7 +68,7 @@ const ImageCarousel = (props) => {
     <div>
     <div className="center-flex">
       <Card style={cardStyling}>
-        <button style={buttonStyling} onClick={props.getLater}>
+        <button className="slick-card-button" onClick={props.getLater}>
           Load Later
         </button>
       </Card>
@@ -82,12 +82,6 @@ const textMarginStyling = {width: "80%", margin: "0px auto"}
 const cardStyling = {
   maxWidth: "80vw",
   background: "rgb(34, 54, 76)",
-}
-
-const buttonStyling = {
-  margin: "2rem 3rem", 
-  background: "rgba(0, 0, 0, 0.2)", 
-  border: "none"
 }
 
 export default ImageCarousel;
