@@ -84,6 +84,8 @@ const MeteorImageSearch = (props) => {
 
   return (
     <div className="root__content">
+      <h1 style={{margin: "0.5rem"}}>Search</h1>
+
       <Card style={cardStyling}>
         <DatePicker value={selectedDate} onChange={handleDateChange}/>
       </Card>
