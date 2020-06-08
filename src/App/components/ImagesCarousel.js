@@ -30,8 +30,8 @@ const ImageCarousel = (props) => {
       <div style={{display: "flex", flexDirection: "column", margin: "1rem"}}>
         
         <div style={{fontSize: "1.5rem", display: "flex", justifyContent: "space-between"}}>
-          <span style={{textAlign: "left" }}> {dateFormat(item.date, "d mmm yyyy")} </span>
-          <span style={{textAlign: "right"}}> {dateFormat(item.date, "hh:MM:ss")} </span>
+          <span style={{textAlign: "left" }}> {dateFormat(item.date, "d mmm yyyy", true)} </span>
+          <span style={{textAlign: "right"}}> {dateFormat(item.date, "hh:MM:ss", true)} </span>
         </div>
 
         <Card style={cardStyling}>
