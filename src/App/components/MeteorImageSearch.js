@@ -28,11 +28,13 @@ const MeteorImageSearch = (props) => {
     if (!isValidDate(selectedDate)) return console.log("Non-valid date, skipping fetch");
     const when  = selectedDate.toISOString() 
 
-    const response  = await axios.get(`${window.location.origin}/api/images-by-date?when=${when}&number=`)
+    const response  = await axios.get(`${window.location.origin}/api/images-by-date?when=${when}`)
     if ( !(response.status==200) ){
       return console.log("ERROR: could not fetch image info: \n", response)
     } else {
       const list = response.data.sort((img1, img2) => Number(new Date(img1.date)) - Number(new Date(img2.date)) )
+      list.minDate = list[0].date
+      list.maxDate = list[list.length-1].date
       setImages(list)
     }
   }
