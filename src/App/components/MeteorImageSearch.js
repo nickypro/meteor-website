@@ -34,25 +34,32 @@ const MeteorImageSearch = (props) => {
     } else {
       const list = response.data.sort((img1, img2) => Number(new Date(img1.date)) - Number(new Date(img2.date)) )
       setImages(list)
-
-      //get the index of the closest value
-      let minIndex = 0;
-      for (let i in list) {
-        if (Math.abs(list[i].diff) < Math.abs(list[minIndex].diff)) {
-          minIndex = i
-        }
-      }
-
-      console.log(carouselRef, minIndex)
-      setTimeout(() => {
-        carouselRef.slickGoTo(minIndex)
-      }, 100);
     }
   }
 
+  //get images on first load and when date changes
   useEffect(() => {
     fetchImages()
   }, [selectedDate])
+
+  //on images change, move carousel to closest value
+  useEffect(() => {
+    if (!images) return;
+    
+    //get the index of the closest value
+    let minIndex = 0;
+    for (let i in images) {
+      if (Math.abs(images[i].diff) < Math.abs(images[minIndex].diff)) {
+        minIndex = i
+      }
+    }
+    
+    //move to this index (and add 1 due to offset)
+    setTimeout(() => {
+      carouselRef.slickGoTo(minIndex-0+1)
+    }, 200);
+
+  }, [images])
 
   return (
     <div className="root__content">
