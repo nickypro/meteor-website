@@ -27,7 +27,7 @@ updateImagesDatabase(__dirname, "/images")
 //handle requests looking for a certain asteroid /images-by-date?when=X&number=10
 app.get('/api/images-by-date', async (req, res) => { 
     const when   = req.query.when   ? req.query.when   : new Date()
-    const number = req.query.number ? req.query.number : 10
+    const number = req.query.number ? req.query.number : 8
     console.log(when)
 
     //look through database for the closest 
