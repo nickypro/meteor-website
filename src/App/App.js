@@ -2,7 +2,9 @@ import React from 'react'
 import MeteorImageSearch from './components/MeteorImageSearch'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './App.css'
+
+import './assets/css/App.css'
+import './assets/css/slick.css'
 
 import { FormHelperText, Button } from '@material-ui/core';
 
