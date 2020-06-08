@@ -22,6 +22,7 @@ function isValidDate(d) {
 const MeteorImageSearch = (props) => {
   const [images, setImages] = React.useState([])
   const [selectedDate, handleDateChange] = React.useState(new Date("2020-04-06T02:00:00.000Z"));
+  const [carouselRef, setCarouselRef] = React.useState();
 
   const fetchImages = async () => {
     if (!isValidDate(selectedDate)) return console.log("Non-valid date, skipping fetch");
@@ -31,8 +32,21 @@ const MeteorImageSearch = (props) => {
     if ( !(response.status==200) ){
       return console.log("ERROR: could not fetch image info: \n", response)
     } else {
-      const list = response.data.sort((date1, date2) => Number(date1) - Number(date2))
+      const list = response.data.sort((img1, img2) => Number(new Date(img1.date)) - Number(new Date(img2.date)) )
       setImages(list)
+
+      //get the index of the closest value
+      let minIndex = 0;
+      for (let i in list) {
+        if (Math.abs(list[i].diff) < Math.abs(list[minIndex].diff)) {
+          minIndex = i
+        }
+      }
+
+      console.log(carouselRef, minIndex)
+      setTimeout(() => {
+        carouselRef.slickGoTo(minIndex)
+      }, 100);
     }
   }
 
@@ -47,7 +61,7 @@ const MeteorImageSearch = (props) => {
       </Card>
       
       <div className="list-of-images">
-        <ImageCarousel images={images}/>
+        <ImageCarousel images={images} setCarouselRef={setCarouselRef}/>
       </div>
     </div>
   )

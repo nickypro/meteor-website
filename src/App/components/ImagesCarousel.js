@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@material-ui/core/Card'
 
 import Carousel from "react-slick"; 
@@ -7,7 +7,6 @@ import dateFormat from 'dateformat'
 
 
 const ImageCarousel = (props) => {
-  
   const carouselOptions = {
     dots: true,
     speed: 200,
@@ -22,7 +21,7 @@ const ImageCarousel = (props) => {
   }
 
   return (
-  <Carousel {...carouselOptions} >
+  <Carousel ref={carousel => props.setCarouselRef(carousel)} {...carouselOptions} >
     {props.images.map((item, index) => {
       const path = `${window.location.origin}/images${item.filePath}` 
       return (
