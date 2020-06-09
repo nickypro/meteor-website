@@ -56,8 +56,8 @@
       "enable": true,
       "speed": 20,
       "direction": "bottom-right",
-      "random": false,
-      "straight": false,
+      "random": true,
+      "straight": true,
       "out_mode": "out",
       "bounce": false,
       "attract": {
