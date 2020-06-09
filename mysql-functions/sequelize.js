@@ -91,4 +91,4 @@ Image.findByClosestTime = async function (date, number = 5, flag = "") {
   }
 }
 
-module.exports = {Image, DayWithImage}
+module.exports = {Image, DayWithImage, sequelize}
