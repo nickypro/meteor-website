@@ -4,6 +4,7 @@ import axios from 'axios';
 import Card from '@material-ui/core/Card'
 import ImageCarousel from './ImagesCarousel';
 import DatePicker from './DatePicker'
+import { useLocaleSetsState } from '../functions/hooks'
 
 const cardStyling = {
   height: "4rem",
@@ -23,6 +24,24 @@ const MeteorImageSearch = (props) => {
   const [images, setImages] = React.useState([])
   const [selectedDate, handleDateChange] = React.useState(new Date("2020-04-06T02:00:00.000Z"));
   const [carouselRef, setCarouselRef] = React.useState();
+  const [starred, setStarred] = useLocaleSetsState("starred_images")
+
+  const toggleStar = (id) => {
+    if (starred.has(id)) {
+      document.getElementById(`button_${id}`).classList.remove("starred")
+      const tempSet = starred;
+      tempSet.delete(id)
+      setStarred(tempSet)
+      return;
+    }
+    if (!starred.has(id)) {
+      document.getElementById(`button_${id}`).classList.add("starred")
+      const tempSet = starred;
+      tempSet.add(id)
+      setStarred(tempSet)
+      return;
+    }
+  }
 
   const fetchImages = async (flag) => {
     let query = ""
@@ -84,7 +103,7 @@ const MeteorImageSearch = (props) => {
   }, [images])
 
   return (
-    <div className="root__content">
+    <div className="root__content" style={{backgroundColor: "rgba(3, 20, 38, 0.1)", width: "100vw"}}>
       <h1 style={{margin: "0.5rem"}}>Search</h1>
 
       <Card style={cardStyling}>
@@ -101,6 +120,8 @@ const MeteorImageSearch = (props) => {
           setCarouselRef={setCarouselRef} 
           getEarlier={() => fetchImages("EARLIER")}
           getLater={() => fetchImages("LATER")}
+          starred={starred}
+          toggleStar={toggleStar}
         />
       </div>
     </div>
