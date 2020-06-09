@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import axios from 'axios';
 
 import Card from '@material-ui/core/Card'
-import ImageCarousel from './ImagesCarousel';
+import ImageCarousel from './MeteorImagesCarousel';
 import DatePicker from './DatePicker'
 import { useLocaleSetsState } from '../functions/hooks'
 
