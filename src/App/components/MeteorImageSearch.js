@@ -79,7 +79,7 @@ const MeteorImageSearch = (props) => {
     //move to this index (and add 1 due to offset)
     setTimeout(() => {
       carouselRef.slickGoTo(minIndex-0+1)
-    }, 200);
+    }, 50);
 
   }, [images])
 
