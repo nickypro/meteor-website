@@ -8,7 +8,7 @@ var serverDir = path.join(__dirname, 'dist');
 var express = require('express');
 var app = express();
 
-var Image = require('./mysql-functions/sequelize')
+var {Image, DayWithImage, sequelize} = require('./mysql-functions/sequelize')
 var updateImagesDatabase = require('./mysql-functions/updateImagesDatabase')
 
 //Logger
@@ -58,7 +58,27 @@ app.get('/api/days-with-data', async (req, res) => {
     return res.json(days)
 })
 
-app.get('/api/')
+app.post('/api/toggle-star', async (req, res) => {
+  try {
+    if (!req.query.id && !req.query.action) throw {message: "id or action not found"}
+    const id = req.query.id
+    const action = req.query.action
+    if (action === "ADD") {
+      console.log(`Adding Star to ${id}`)
+      Image.update({ stars : sequelize.literal('stars + 1') }, { where: { filePath: req.query.id } });
+      res.sendStatus(200)
+    } 
+    else if (action === "REMOVE") {
+      console.log(`Removing Star from ${id}`)
+      Image.update({ stars : sequelize.literal('stars - 1') }, { where: { filePath: req.query.id } });
+      res.sendStatus(200)
+    } 
+    else throw {message: "action did not match"}
+  } catch (err) {
+    console.log(`Unsuccessful Toggle Star : ${err.message}`)
+    res.sendStatus(403)
+  }
+})
 
 app.listen(3000, function () {
     console.log('Listening on http://localhost:3000/');
