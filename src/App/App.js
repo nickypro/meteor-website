@@ -1,4 +1,6 @@
 import React from 'react'
+import Background from './components/Background'
+
 import {Link as ScrollLink, Element} from 'react-scroll'
 import MeteorImageSearch from './components/MeteorImageSearch'
 import "slick-carousel/slick/slick.css";
@@ -8,10 +10,6 @@ import './assets/css/App.css'
 import './assets/css/slick.css'
 
 import { FormHelperText, Button } from '@material-ui/core';
-
-function Background(props) {
-  return <div className="background"/>
-}
 
 const App = () => {
   return (
