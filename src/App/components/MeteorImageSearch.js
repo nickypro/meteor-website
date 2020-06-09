@@ -88,7 +88,11 @@ const MeteorImageSearch = (props) => {
       <h1 style={{margin: "0.5rem"}}>Search</h1>
 
       <Card style={cardStyling}>
-        <DatePicker value={selectedDate} onChange={handleDateChange}/>
+        <DatePicker 
+          value={selectedDate} 
+          onChange={handleDateChange}
+          dotsUrl={`${window.location.origin}/api/days-with-data`}
+        />
       </Card>
       
       <div className="list-of-images">
