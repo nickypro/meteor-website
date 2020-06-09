@@ -50,6 +50,14 @@ const ImageCarousel = (props) => {
         <a href={path}>
           <img className="meteor-image" key={index} src={path}/>
         </a>
+        <button 
+          id={`button_${item.filePath}`}
+          class={`slick-star ${props.starred.has(item.filePath) ? "starred" : ""}`} 
+          onClick={() => props.toggleStar(item.filePath)}
+          for="favourite meteor"
+          > 
+          &#9733;
+        </button>
         <div style={textMarginStyling}>
           <h2 style={{textAlign: "center"}}>Meteor Image</h2>
           <ul>
@@ -80,6 +88,7 @@ const ImageCarousel = (props) => {
 const textMarginStyling = {width: "80%", margin: "0px auto"}
 
 const cardStyling = {
+  position: "relative",
   maxWidth: "80vw",
   background: "rgb(34, 54, 76)",
 }
