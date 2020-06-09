@@ -28,6 +28,7 @@
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-particles-js": "^3.2.1",
     "react-scroll": "^1.7.16",
     "react-slick": "^0.26.1",
     "sequelize": "^5.21.11",
