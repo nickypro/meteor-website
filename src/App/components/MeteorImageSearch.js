@@ -32,6 +32,7 @@ const MeteorImageSearch = (props) => {
       const tempSet = starred;
       tempSet.delete(id)
       setStarred(tempSet)
+      axios.post(`${window.location.origin}/api/toggle-star?id=${id}&action=REMOVE`)
       return;
     }
     if (!starred.has(id)) {
@@ -39,6 +40,7 @@ const MeteorImageSearch = (props) => {
       const tempSet = starred;
       tempSet.add(id)
       setStarred(tempSet)
+      axios.post(`${window.location.origin}/api/toggle-star?id=${id}&action=ADD`)
       return;
     }
   }
