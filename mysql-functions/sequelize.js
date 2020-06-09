@@ -28,6 +28,16 @@ const Image = sequelize.define('image', {
   },
   camera: {
     type: Sequelize.STRING,
+  },
+  stars: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  label: {
+    type: Sequelize.STRING,
+  },
+  info: {
+    type: Sequelize.STRING,
   }
 }, {
   // in aditional options, we index date for quick lookup
