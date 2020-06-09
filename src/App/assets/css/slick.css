@@ -64,3 +64,24 @@
 .slick-card-button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
+
+.slick-star {
+  position: absolute;
+  color: purple;
+  top: 0.2rem;
+  left: 0.2rem;
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  opacity: 0.2;
+  cursor: pointer;
+}
+
+.slick-star:hover {
+  opacity: 0.5;
+  transform: scale(1.1);
+}
+
+.starred {
+  opacity: 1;
+}
