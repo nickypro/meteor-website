@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./DatePicker.css"
 
 import 'date-fns';
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
       width: 0,
       border: '2px solid',
       borderRadius: 4,
-      borderColor: theme.palette.primary.main,
+      borderColor: "hotpink",
       right: '50%',
       transform: 'translateX(1px)',
       top: '80%'
@@ -30,24 +30,25 @@ const useStyles = makeStyles((theme) => ({
 
 const DatePicker = (props) => {
   {/* Code for calendar dots */}
-  const [daysWithDot, setDaysWithDot] = React.useState([])
+  const [daysWithDot, setDaysWithDot] = React.useState( new Set() )
 
   const classes = useStyles()
 
-  const onOpenPicker = () => {
-      onPickerViewChange(props.value)
-  }
+  useEffect(() => {
+    fetchCalendarDots()
+  }, [])
 
-  const onPickerViewChange = async(date) => {
-    const year = date.getFullYear()
-    return axios.get(`${props.dotsUrl}?date=${year}`).then(response => {
-      setDaysWithDot(response.data.map(item => doFormat(item.day) ))
-    }).catch((err) => console.log("Error getting data for calendar dots: ",err))
-  
+  const fetchCalendarDots = () => {
+    return axios.get( props.dotsUrl ).then(response => {
+      const set = new Set()
+      response.data.forEach( item => set.add( doFormat(item.day) ) )  
+      console.log(set)
+      setDaysWithDot( set )
+    }).catch( err  => console.log("Error getting data for calendar dots:  ",err))
   }
 
   const renderDayInPicker = (date, selectedDate, dayInCurrentMonth, dayComponent) => {
-    if (daysWithDot.includes( doFormat(date) )) {
+    if ( daysWithDot.has( doFormat(date) ) ) {
       return (
       <div className={classes.dayWithDotContainer}>
         {dayComponent}
@@ -71,9 +72,6 @@ const DatePicker = (props) => {
         format="d MMM yyyy - HH:mm"
         showTodayButton
         renderDay={renderDayInPicker}
-        onOpen={onOpenPicker}
-        onMonthChange={onPickerViewChange}
-        onYearChange={onPickerViewChange}
       />
     </div>
   </MuiPickersUtilsProvider>
