@@ -42,6 +42,16 @@ const Image = sequelize.define('image', {
   ]
 });
 
+const DayWithImage = sequelize.define('day_with_image', {
+  day: {
+    type: Sequelize.DATEONLY,
+    primaryKey,
+    allowNull: false,
+  }
+}, {
+  // additional options
+})
+
 Image.findByClosestTime = async function (date, number = 5, flag = "") {
   try {
     //make date MySQL friendly
@@ -55,7 +65,7 @@ Image.findByClosestTime = async function (date, number = 5, flag = "") {
       ) UNION ( 
         SELECT *, TIMESTAMPDIFF(SECOND, '${sqlDate}', date) AS diff
           FROM images where date < '${sqlDate}'
-          ORDER BY date DESC LIMIT ${(flag==="AFTER")? 1 : number}
+          ORDER BY date DESC LIMIT ${(flag==="AFTER")? 0 : number}
       )
     ) foo
     ORDER BY ABS(diff)
@@ -70,4 +80,4 @@ Image.findByClosestTime = async function (date, number = 5, flag = "") {
   }
 }
 
-module.exports = Image
+module.exports = {Image, DayWithImage}
