@@ -1,9 +1,10 @@
 //requiring path and fs modules
 const path = require('path');
 const fs = require('fs');
+const dateFormat = require('dateformat')
 
 const parseFilesInFolder = require('./parseFilesInFolder')
-const Image = require('./sequelize')
+const {Image, DayWithImage} = require('./sequelize')
 
 function updateImagesDatabase(dir = __dirname, subdir = "/images") {
   
@@ -29,6 +30,20 @@ function updateImagesDatabase(dir = __dirname, subdir = "/images") {
       updateOnDuplicate: ["date"] 
     })
   )
+
+  DayWithImage.sync().then(() => {
+    let daysSet = new Set() 
+    for (let i in array) {
+      daysSet.add(dateFormat(array[i].date, "yyyy-mm-dd", true))
+    }
+    let daysArray = [...daysSet]
+    daysArray = daysArray.map(day => ({day: day}) )
+
+    DayWithImage.bulkCreate(daysArray, {
+      updateOnDuplicate: ["day"]
+    })
+  })
+
 }
 
 module.exports = updateImagesDatabase
