@@ -45,11 +45,12 @@ const Image = sequelize.define('image', {
 const DayWithImage = sequelize.define('day_with_image', {
   day: {
     type: Sequelize.DATEONLY,
-    primaryKey,
+    primaryKey: true,
     allowNull: false,
   }
 }, {
   // additional options
+  timestamps: false,
 })
 
 Image.findByClosestTime = async function (date, number = 5, flag = "") {
