@@ -33,6 +33,7 @@ const MeteorImageSearch = (props) => {
         break;
       case "LATER":
         query = `after=${images.maxDate}`
+        carouselRef.slickGoTo(1)
         break;
       default:
         if ( isValidDate(selectedDate) ) {
