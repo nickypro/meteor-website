@@ -26,10 +26,10 @@ const MeteorImageCard = (props) => {
       &#9733;
     </button>
     <div style={textMarginStyling}>
-      <h2 style={{textAlign: "center"}}>Meteor Image</h2>
+      <h2 style={{textAlign: "center"}}>{props.data.label || "Meteor Image"}</h2>
       <ul>
         <li> Cam  : {props.data.camera} </li>
-        <li> info : meteor     </li>
+        <li> info : {props.data.info || "meteor"}     </li>
       </ul>
     </div>
     <br/>
