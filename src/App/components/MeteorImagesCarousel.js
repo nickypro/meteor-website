@@ -23,6 +23,7 @@ const ImageCarousel = (props) => {
   return (
   <Carousel ref={carousel => props.setCarouselRef(carousel)} {...carouselOptions} >
     
+    {/* "Load Earlier" button*/}
     <div>
     <div className="center-flex">
       <Card style={cardStyling}>
@@ -42,7 +43,8 @@ const ImageCarousel = (props) => {
         toggleStar={() => props.toggleStar(item.filePath)}
       />
     ))}
-    {/* End of Meteor Image List */}
+
+    {/* "Load Later" button */}
     <div>
     <div className="center-flex">
       <Card style={cardStyling}>
@@ -52,6 +54,7 @@ const ImageCarousel = (props) => {
       </Card>
     </div>
     </div>
+
   </Carousel>
 )};
 
