@@ -3,6 +3,7 @@ import Background from './components/Background'
 
 import {Link as ScrollLink, Element} from 'react-scroll'
 import MeteorImageSearch from './components/MeteorImageSearch'
+import MeteorImageFeatured from './components/MeteorImageFeatured'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -22,6 +23,9 @@ const App = () => {
       </ScrollLink>
     </div>
     <Element name="meteor-images">
+      <MeteorImageFeatured id="meteor-images"/>
+    </Element>
+    <Element name="meteor-images-search">
       <MeteorImageSearch id="meteor-images"/>
     </Element>
   </main>
