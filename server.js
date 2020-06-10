@@ -55,6 +55,14 @@ app.get('/api/images-by-date', async (req, res) => {
     res.json(listOfImages[0])
 })  
 
+app.get('/api/images-by-stars', async (req, res) => {
+    const images = await Image.findAll({ 
+      limit: 10 ,
+      order: [['stars', 'DESC']]
+    }) 
+    return res.json(images)
+})
+
 app.get('/api/days-with-data', async (req, res) => {
     const days = await DayWithImage.findAll({})
     return res.json(days)
