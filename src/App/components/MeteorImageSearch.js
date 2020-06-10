@@ -106,7 +106,7 @@ const MeteorImageSearch = (props) => {
   }, [images])
 
   return (
-    <div className="root__content" style={{backgroundColor: "rgba(3, 20, 38, 0.1)", width: "100vw"}}>
+    <div className="root__content" style={{width: "100vw"}}>
       <h1 style={{margin: "0.5rem"}}>Search</h1>
 
       <Card style={cardStyling}>
