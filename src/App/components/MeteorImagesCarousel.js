@@ -24,6 +24,7 @@ const ImageCarousel = (props) => {
   <Carousel ref={carousel => props.setCarouselRef(carousel)} {...carouselOptions} >
     
     {/* "Load Earlier" button*/}
+    {props.getEarlier && 
     <div>
     <div className="center-flex">
       <Card style={cardStyling}>
@@ -33,6 +34,7 @@ const ImageCarousel = (props) => {
       </Card>
     </div>
     </div>
+    }
 
     {/* List meteor images */}
     {props.images.map((item, index) => (
@@ -45,6 +47,7 @@ const ImageCarousel = (props) => {
     ))}
 
     {/* "Load Later" button */}
+    {props.getLater && 
     <div>
     <div className="center-flex">
       <Card style={cardStyling}>
@@ -54,6 +57,7 @@ const ImageCarousel = (props) => {
       </Card>
     </div>
     </div>
+    }
 
   </Carousel>
 )};
