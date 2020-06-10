@@ -2,6 +2,8 @@ const DIR = __dirname //path to folder where images are stored
 const FOLDER_NAME = "/images" //name of folder where images are stored
 
 var path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, './.env') })
+
 var imagesDir = path.join(DIR, FOLDER_NAME);
 var serverDir = path.join(__dirname, 'dist');
 
@@ -80,6 +82,6 @@ app.post('/api/toggle-star', async (req, res) => {
   }
 })
 
-app.listen(3000, function () {
-    console.log('Listening on http://localhost:3000/');
+app.listen(process.env.PORT || 80, function () {
+    console.log(`Listening on http://localhost:${process.env.PORT || 80}/`);
 }); 
