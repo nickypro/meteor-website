@@ -5,7 +5,7 @@ import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import axios from 'axios'
 import {makeStyles } from '@material-ui/core' 
-import {MuiPickersUtilsProvider, KeyboardDateTimePicker } from "@material-ui/pickers";
+import {MuiPickersUtilsProvider, DateTimePicker } from "@material-ui/pickers";
 
 import dateFormat from 'dateformat'
 const doFormat = (date) => dateFormat(new Date(date), 'yyyy/mm/dd')
@@ -62,7 +62,7 @@ const DatePicker = (props) => {
 
   return (<MuiPickersUtilsProvider utils={DateFnsUtils}>
     <div style={{position: "relative"}}>
-      <KeyboardDateTimePicker
+      <DateTimePicker
         variant="dialog"
         ampm={false}
         label="Chose a time"
