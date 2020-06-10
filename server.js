@@ -56,8 +56,12 @@ app.get('/api/images-by-date', async (req, res) => {
 })  
 
 app.get('/api/images-by-stars', async (req, res) => {
+    console.log(req.query)
+    const page = req.query.page ? req.query.page : 0  
+
     const images = await Image.findAll({ 
-      limit: 10 ,
+      offset: 8 * page ,
+      limit: 8 ,
       order: [['stars', 'DESC']]
     }) 
     return res.json(images)
