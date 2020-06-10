@@ -99,6 +99,7 @@ const MeteorImageSearch = (props) => {
     
     //move to this index (and add 1 due to offset)
     setTimeout(() => {
+      if (!carouselRef) return;
       carouselRef.slickGoTo(minIndex-0+1)
     }, 200);
 
