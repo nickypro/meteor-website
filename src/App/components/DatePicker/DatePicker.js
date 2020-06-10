@@ -39,7 +39,9 @@ const DatePicker = (props) => {
   }, [])
 
   const fetchCalendarDots = () => {
-    return axios.get( props.dotsUrl ).then(response => {
+    if (!props.dotsUrl) return;
+    
+    axios.get( props.dotsUrl ).then(response => {
       const set = new Set()
       response.data.forEach( item => set.add( doFormat(item.day) ) )  
       console.log(set)
