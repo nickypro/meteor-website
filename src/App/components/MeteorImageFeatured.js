@@ -29,7 +29,7 @@ const MeteorImageFeatured = (props) => {
   const fetchImages = async (options = {}) => {
 
     let query = ""
-    query += (options.page) ? `page=${options.page}&` : "" 
+    query = (options.page ? `page=${options.page}&` : "" )
 
     const response  = await axios.get(`${window.location.origin}/api/images-by-stars?${query}`)
     if ( !(response.status==200) ){
@@ -72,7 +72,7 @@ const MeteorImageFeatured = (props) => {
 
   const changePageTo = (newPage) => {
     setPage(newPage)
-    fetchImages({newPage})
+    fetchImages({page: newPage})
 
     let newIndex = 1
     if (newPage < page) newIndex += images.length - 1
