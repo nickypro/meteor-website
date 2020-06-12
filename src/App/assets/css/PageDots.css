@@ -1,0 +1,34 @@
+.side-dot-container {
+  position: fixed; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  left: 0.1rem; 
+  top: 0.5rem; 
+  z-index: 100;
+}
+
+.side-dot {
+  opacity: 0.5;
+  cursor: pointer;
+  position: relative;
+  height: 0.5rem; 
+  margin: 0.5rem; 
+  left: 1rem;
+}
+
+.side-dot::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -1rem;
+  padding: 0; 
+  width: 0.7rem; 
+  height: 0.7rem; 
+  border-radius: 50%; 
+  background-color: white; 
+}
+
+.side-dot:hover {
+  opacity: 0.8;
+}
