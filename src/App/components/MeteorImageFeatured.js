@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import Card from '@material-ui/core/Card'
 import ImageCarousel from './MeteorImagesCarousel';
-import DatePicker from './DatePicker'
 import { useLocaleSetsState } from '../functions/hooks'
 
 const cardStyling = {
@@ -14,10 +13,6 @@ const cardStyling = {
   display: "flex",
   flexDirection: "row",
   alignItems: "center"
-}
-
-function isValidDate(d) {
-  return d instanceof Date && !isNaN(d);
 }
 
 const MeteorImageFeatured = (props) => {
