@@ -8,7 +8,7 @@ import MeteorImageCard from './MeteorImageCard';
 const ImageCarousel = (props) => {
   const carouselOptions = {
     dots: true,
-    speed: 200,
+    speed: 100,
     infinite: false,
     centerMode: true,
     focusOnSelect: true,
