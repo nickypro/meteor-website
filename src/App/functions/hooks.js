@@ -17,4 +17,19 @@ export function useLocaleSetsState(localItem) {
   return [loc, setLoc]
 }
 
+// for objects
+export function useLocaleObjectState(localItem, defaultValue = {}) {
+  //turn string to object
+  const savedValue = localStorage.getItem(localItem)
+  const [loc, setState] = useState( savedValue ? JSON.parse(savedValue) : defaultValue )
+
+  //turn object to string
+  const setLoc = (newItem) => {
+    setState(newItem)
+    localStorage.setItem(localItem, JSON.stringify(newItem))
+  }
+
+  return [loc, setLoc]
+}
+
 export default useLocaleSetsState
