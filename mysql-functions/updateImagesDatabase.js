@@ -19,6 +19,8 @@ function updateImagesDatabase(dir = __dirname, subdir = "/images") {
 
   //listing all folders
   folders.forEach(folder => {
+    subfolders = fs.readdirSync(path.join(directoryPath, folder))
+    subfolders.map(subfolder => path.join(directoryPath, folder, subfolder))
     array = [...array, ...parseFilesInFolder(folder, folderPath(folder))] 
   })
 
