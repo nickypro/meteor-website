@@ -48,6 +48,9 @@ const Image = sequelize.define('image', {
     },{
       unique: false,
       fields:['date']
+    },{
+      unique: false,
+      fields:['stars']
     }
   ]
 });
