@@ -55,7 +55,7 @@ const Image = sequelize.define('image', {
   ]
 });
 
-const ImagePoints = sequelize.define('image_points', {
+const LabelPoints = sequelize.define('image_points', {
   filePath: {
     type: Sequelize.STRING,
     primaryKey: true,
