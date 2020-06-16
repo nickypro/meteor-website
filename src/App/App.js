@@ -17,11 +17,8 @@ const pages = [{
     section: "Title",
     id: "title",
   },{
-    section: "Featured",
-    id: "meteor-images-featured",
-  },{
-    section: "Search",
-    id: "meteor-images-search",
+    section: "Meteor Images",
+    id: "meteor-images",
   }
 ]
 
@@ -36,16 +33,17 @@ const App = () => {
     <Element name="title">
       <div className="root__content">
         <h1 style={{textAlign: "center", fontSize: "4rem"}}>Meteor Images</h1>
-        <ScrollLink to="meteor-images-featured" smooth={true} duration={500}>
+        <ScrollLink to={pages[1].id} smooth={true} duration={500}>
           <h1 className="scroll-down-icon"> &#709; </h1>
         </ScrollLink>
       </div>
     </Element>
-    <Element name="meteor-images-featured">
-      <MeteorImageFeatured id="meteor-images-featured"/>
-    </Element>
-    <Element name="meteor-images-search">
-      <MeteorImageSearch id="meteor-images-search"/>
+    <Element name="meteor-images">
+      <MeteorImageSearch id="meteor-images" 
+        userMeteorInfo={userMeteorInfo} 
+        toggleStar={toggleStar} 
+        setLabel={setLabel}
+      />
     </Element>
   </main>
   )
