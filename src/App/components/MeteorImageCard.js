@@ -19,7 +19,7 @@ const MeteorImageCard = (props) => {
     </a>
     <button 
       id={`button_${props.data.filePath}`}
-      class={`slick-star ${props.starred ? "starred" : ""}`} 
+      className={`slick-star ${props.starred ? "starred" : ""}`} 
       onClick={props.toggleStar}
       for="favourite meteor"
       > 
