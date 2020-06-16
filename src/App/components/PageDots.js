@@ -16,6 +16,7 @@ const PageDots = (props) => {
     props.pages.forEach((page, index) => {
       if ((index - 0.5)*h < yNew && yNew <= (index + 0.5)*h) dottedPage = index;
     })
+    if (yNew > h*(props.pages.length-1) ) dottedPage = props.page.length-1
     
     if (dots[dottedPage].isCurrent === true) return
 
