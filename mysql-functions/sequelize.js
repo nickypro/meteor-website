@@ -55,6 +55,46 @@ const Image = sequelize.define('image', {
   ]
 });
 
+const ImagePoints = sequelize.define('image_points', {
+  filePath: {
+    type: Sequelize.STRING,
+    primaryKey: true,
+    allowNull: false,
+  },
+  meteor: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  satellite: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  aircraft: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  wildlife: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  clouds: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  other: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  }
+}, {
+  //additional options
+  indexes:[
+    {
+      unique: true,
+      fields:['filePath']
+    }
+  ]
+})
+
 const DayWithImage = sequelize.define('day_with_image', {
   day: {
     type: Sequelize.DATEONLY,
