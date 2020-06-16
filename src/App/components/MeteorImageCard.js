@@ -9,8 +9,8 @@ const MeteorImageCard = (props) => {
   <div style={{display: "flex", flexDirection: "column", margin: "1rem"}}>
     
     <div style={{fontSize: "1.5rem", display: "flex", justifyContent: "space-between"}}>
-      <span style={{textAlign: "left" }}> {dateFormat(props.data.date, "d mmm yyyy", true)} </span>
-      <span style={{textAlign: "right"}}> {dateFormat(props.data.date, "hh:MM:ss", true)} </span>
+      <span style={{textAlign: "left" }}> {dateFormat(props.data.date, "d mmm yyyy")} </span>
+      <span style={{textAlign: "right"}}> {dateFormat(props.data.date, "hh:MM:ss")} </span>
     </div>
 
     <Card style={cardStyling}>
