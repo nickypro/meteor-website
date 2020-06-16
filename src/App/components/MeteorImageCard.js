@@ -29,7 +29,10 @@ const MeteorImageCard = (props) => {
       <h2 style={{textAlign: "center"}}>{props.data.label || "Meteor Image"}</h2>
       <ul>
         <li> Cam  : {props.data.camera} </li>
-        <li> info : {props.data.info || "meteor"}     </li>
+        <li> Label: {props.data.label || "unlabeled"}  </li>
+        {props.data.info && 
+          <li>{props.data.info}</li>
+        }
       </ul>
     </div>
     <br/>
