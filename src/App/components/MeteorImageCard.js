@@ -5,6 +5,12 @@ import LabelPicker from './LabelPicker'
 
 const MeteorImageCard = (props) => {
   const path = `${window.location.origin}/images${props.data.filePath}` 
+  
+  const submitLabel = (labelValue) => {
+    if (props.submitLabel) {
+      props.submitLabel(props.data.filePath, labelValue)
+    }
+  }
   return (
   <div>
   <div style={{display: "flex", flexDirection: "column", margin: "1rem"}}>
