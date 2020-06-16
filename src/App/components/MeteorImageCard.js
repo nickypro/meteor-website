@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '@material-ui/core/Card'
 import dateFormat from 'dateformat'
+import LabelPicker from './LabelPicker'
 
 const MeteorImageCard = (props) => {
   const path = `${window.location.origin}/images${props.data.filePath}` 
@@ -34,6 +35,7 @@ const MeteorImageCard = (props) => {
           <li>{props.data.info}</li>
         }
       </ul>
+      <LabelPicker submit={submitLabel}/>
     </div>
     <br/>
     </Card>
