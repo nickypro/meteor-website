@@ -1,6 +1,8 @@
 import React from 'react'
 import Background from './components/Background'
 
+import {useLocaleStateUserMeteorInfo } from './functions/hooks'
+
 import {Link as ScrollLink, Element} from 'react-scroll'
 import PageDots from './components/PageDots'
 import MeteorImageSearch from './components/MeteorImageSearch'
@@ -24,6 +26,9 @@ const pages = [{
 ]
 
 const App = () => {
+  const [userMeteorInfo, setUserMeteorInfo, toggleStar, setLabel] = 
+    useLocaleStateUserMeteorInfo("user_selections");
+
   return (
   <main>
     <Background />
