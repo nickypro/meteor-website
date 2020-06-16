@@ -2,6 +2,8 @@ import React, {useEffect} from 'react'
 import axios from 'axios';
 
 import Card from '@material-ui/core/Card'
+import ListItem from '@material-ui/core/ListItem';
+
 import ImageCarousel from './MeteorImagesCarousel';
 import DatePicker from './DatePicker'
 import { useLocaleSetsState } from '../functions/hooks'
@@ -175,6 +177,7 @@ const MeteorImageSearch = (props) => {
   }
 
   return (
+    <>
     <div className="root__content" style={{width: "100vw"}}>
       <h1 style={{margin: "0.5rem"}}>
         {selectedDate ? `Search - ${selectedDate}` : "Featured Images"}
@@ -202,6 +205,27 @@ const MeteorImageSearch = (props) => {
         />
       </div>
     </div>
+    <div className="root__content" style={{width: "100vw"}}>
+      <Card style={cardStyling}>
+      <h3>
+        List of Images
+      </h3>
+      {images.map(img => {
+        return (
+          <div key={img.filePath}>
+            <a href={img.filePath}>
+              <ListItem button>
+                {img.filePath} 
+              </ListItem> 
+            </a>
+          </div>
+        ) 
+      })
+
+      }
+      </Card> 
+    </div>
+    </>
   )
 }
 
