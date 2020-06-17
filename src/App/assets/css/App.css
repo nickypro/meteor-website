@@ -54,4 +54,14 @@
 .meteor-list {
   max-height: 80vh;
   overflow-y: scroll !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+
+.meteor-list-item {
+  width: 100%;
+  font-family: monospace;
+  text-decoration: none !important;
+  list-style-type: disc;
 }
