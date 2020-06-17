@@ -5,7 +5,7 @@ import NativeSelect from '@material-ui/core/NativeSelect'
 import Button from '@material-ui/core/Button'
 import Send from '@material-ui/icons/Send'
 
-const labels = require('../labels.json')
+const labels = require('../../../labels.json')
 
 
 const LabelPicker = (props) => {
