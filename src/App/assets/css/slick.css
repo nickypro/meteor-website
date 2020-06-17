@@ -88,3 +88,11 @@
   opacity: 1 !important;
   text-shadow: 0px 0px 10px rgba(255,255,255,0.2);
 }
+
+.carousel-slider {
+  position: relative;
+  cursor: pointer;
+  width: 90%;
+  max-width: 600px;
+  padding: 0.5rem;
+}
