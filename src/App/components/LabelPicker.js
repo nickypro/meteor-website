@@ -3,6 +3,7 @@ import React from 'react'
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect'
 import Button from '@material-ui/core/Button'
+import Send from '@material-ui/icons/Send'
 
 const labels = require('../labels.json')
 
@@ -21,9 +22,11 @@ const LabelPicker = (props) => {
   return (
   <FormControl style={{width: "100%", display: "flex", flexDirection: "row", alignItems: "center"}}>    
     <NativeSelect
+      id={`select_${props.imageId}`}
       style={{flex: 10}}
       value={value}
       onChange={handleChange}
+      disabled={props.disabled}
       >
         <option value="">Choose A Label</option>
       
@@ -33,9 +36,13 @@ const LabelPicker = (props) => {
 
     </NativeSelect>
     
-    {props.submit &&
-      <Button style={{flex: 1}} onClick={() => props.submit(value)}> 
-        Send Label 
+    {props.submit && !props.disabled &&
+      <Button 
+        onClick={() => props.submit(props.imageId, value)}
+        style={{flex: 1}}
+        id={`select_send_${props.imageId}`}
+        > 
+        <Send /> Send
       </Button>
     }
 
