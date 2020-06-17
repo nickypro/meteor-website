@@ -30,6 +30,7 @@ const LabelPicker = (props) => {
       value={value}
       onChange={handleChange}
       >
+        <option value="">Choose A Label</option>
       
       {labels.map(labelOption => {
         return <MenuItem value={labelOption}>{labelOption}</MenuItem>
