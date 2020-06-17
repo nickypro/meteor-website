@@ -95,6 +95,7 @@ const MeteorImageSearch = (props) => {
       //if successful request, set carousel to use new images
       let list = response.data;
 
+      if (list.length & list.length > 0) {
       list = list.sort((img1, img2) => 
         Number(new Date(img1.date)) - Number(new Date(img2.date)) 
       )
@@ -102,6 +103,7 @@ const MeteorImageSearch = (props) => {
       list.maxDate = list[list.length-1].date
       console.log("min date: ", list.minDate)
       console.log("max date: ", list.maxDate)
+      }
 
       setImages(list)
     }
