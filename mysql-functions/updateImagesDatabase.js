@@ -4,7 +4,7 @@ const fs = require('fs');
 const dateFormat = require('dateformat')
 
 const parseFilesInFolder = require('./parseFilesInFolder')
-const {Image, DayWithImage} = require('./sequelize')
+const {Image, DayWithImage, LabelPoints} = require('./sequelize')
 
 function updateImagesDatabase(dir = __dirname, subdir = "/images") {
   
@@ -46,6 +46,7 @@ function updateImagesDatabase(dir = __dirname, subdir = "/images") {
     })
   })
 
+  LabelPoints.sync()
 }
 
 module.exports = updateImagesDatabase
