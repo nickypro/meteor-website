@@ -1,0 +1,12 @@
+{
+  "labels": [
+    "meteor",
+    "satellite",
+    "aircraft",
+    "wildlife",
+    "clouds",
+    "other"
+  ],
+  "imageDomain": "",
+  "imagePath": "images"
+}

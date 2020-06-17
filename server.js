@@ -1,3 +1,6 @@
+const config = require('./config.json')
+const labels = config.labels
+
 const DIR = __dirname //path to folder where images are stored
 const FOLDER_NAME = "/images" //name of folder where images are stored
 
@@ -19,7 +22,6 @@ var {
 
 var updateImagesDatabase = require('./mysql-functions/updateImagesDatabase')
 
-const labels = require('./labels.json')
 const DEFAULT_NUMBER = 42
 
 //Logger

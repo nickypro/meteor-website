@@ -3,8 +3,13 @@ import Card from '@material-ui/core/Card'
 import dateFormat from 'dateformat'
 import LabelPicker from './LabelPicker'
 
+const config = require('../../../config.json')
+const imageDomain = config.imageDomain || window.location.origin
+const imagePath = config.imageUrl || "images"
+const imgUrl = `${imageDomain}/${imagePath}`
+
 const MeteorImageCard = (props) => {
-  const path = `${window.location.origin}/images${props.data.filePath}` 
+  const path = `${imgUrl}${props.data.filePath}` 
   
   return (
   <div>

@@ -5,8 +5,8 @@ import NativeSelect from '@material-ui/core/NativeSelect'
 import Button from '@material-ui/core/Button'
 import Send from '@material-ui/icons/Send'
 
-const labels = require('../../../labels.json')
-
+const config = require('../../../config.json')
+const labels = config.labels
 
 const LabelPicker = (props) => {
   const [value, setValue] = (props.value !== undefined) ? [props.value, props.setValue] : React.useState()

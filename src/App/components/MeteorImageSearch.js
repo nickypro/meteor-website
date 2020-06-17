@@ -11,6 +11,11 @@ import DatePicker from './DatePicker'
 import { useLocaleSetsState } from '../functions/hooks'
 import LabelPicker from './LabelPicker';
 
+const config = require('../../../config.json')
+const imageDomain = config.imageDomain || window.location.origin
+const imagePath = config.imageUrl || "images"
+const imgUrl = `${imageDomain}/${imagePath}`
+
 const cardStyling = {
   padding: "1rem 2rem", 
   margin: "0.5rem",
@@ -249,7 +254,7 @@ const MeteorImageSearch = (props) => {
       {images.map(img => {
         return (
           <div key={img.filePath}>
-            <a href={img.filePath} className="meteor-list-item">
+            <a href={`${imgUrl}${img.filePath}`} className="meteor-list-item" target="_blank">
               <ListItem button className="meteor-list-item">
                 {dateFormat(img.date, 'yyyy mmm dd - hh:MM:ss ')}
                 {img.label || "unlabeled"} 
