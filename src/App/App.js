@@ -17,7 +17,7 @@ const pages = [{
     section: "Title",
     id: "title",
   },{
-    section: "Meteor Images",
+    section: "Images",
     id: "meteor-images",
   },{
     section: "List",
