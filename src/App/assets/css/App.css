@@ -50,3 +50,8 @@
 .scroll-down-icon:hover {
   transform: scaleX(3.1) scaleY(2.1);
 }
+
+.meteor-list {
+  max-height: 80vh;
+  overflow-y: scroll !important;
+}

@@ -241,7 +241,7 @@ const MeteorImageSearch = (props) => {
   </Element>
   <Element name="meteor-images-list">
     <div className="root__content" style={{width: "100vw"}}>
-      <Card style={cardStyling}>
+      <Card style={cardStyling} className="meteor-list">
       <h3>
         List of Images
       </h3>
@@ -250,7 +250,7 @@ const MeteorImageSearch = (props) => {
           <div key={img.filePath}>
             <a href={img.filePath}>
               <ListItem button>
-                {img.filePath} 
+                {img.date} 
               </ListItem> 
             </a>
           </div>
