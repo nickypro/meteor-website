@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Card from '@material-ui/core/Card'
 import ListItem from '@material-ui/core/ListItem';
+import {Element} from 'react-scroll'
 
 import ImageCarousel from './MeteorImagesCarousel';
 import DatePicker from './DatePicker'
@@ -208,7 +209,8 @@ const MeteorImageSearch = (props) => {
   }
 
   return (
-    <>
+  <>
+  <Element name="meteor-images">
     <div className="root__content" style={{backgroundColor: "rgba(3, 20, 38, 0.2)", width: "100vw"}}>
       <h1 style={{margin: "0.5rem"}}>
         {selectedDate ? `Search - ${selectedDate}` : "Featured Images"}
@@ -236,6 +238,8 @@ const MeteorImageSearch = (props) => {
         />
       </div>
     </div>
+  </Element>
+  <Element name="meteor-images-list">
     <div className="root__content" style={{width: "100vw"}}>
       <Card style={cardStyling}>
       <h3>
@@ -256,7 +260,8 @@ const MeteorImageSearch = (props) => {
       }
       </Card> 
     </div>
-    </>
+  </Element>
+  </>
   )
 }
 

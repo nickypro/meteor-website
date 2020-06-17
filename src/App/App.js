@@ -30,6 +30,7 @@ const App = () => {
   <main>
     <Background />
     <PageDots pages={pages}/>
+    
     <Element name="title">
       <div className="root__content">
         <h1 style={{textAlign: "center", fontSize: "4rem"}}>Meteor Images</h1>
@@ -38,13 +39,13 @@ const App = () => {
         </ScrollLink>
       </div>
     </Element>
-    <Element name="meteor-images">
-      <MeteorImageSearch id="meteor-images" 
-        userMeteorInfo={userMeteorInfo} 
-        toggleStar={toggleStar} 
-        setLabel={setLabel}
-      />
-    </Element>
+
+    <MeteorImageSearch id="meteor-images" 
+      userMeteorInfo={userMeteorInfo} 
+      toggleStar={toggleStar} 
+      setLabel={setLabel}
+    />
+    
   </main>
   )
 }
