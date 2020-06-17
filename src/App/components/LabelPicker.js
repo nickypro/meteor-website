@@ -16,7 +16,7 @@ const LabelPicker = (props) => {
     
     if (setValue) setValue(newValue)
 
-    if (props.handleChange) props.handleChange(newValue)
+    if (props.onChange) props.onChange(newValue)
   }
 
   return (
