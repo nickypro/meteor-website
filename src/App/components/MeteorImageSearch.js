@@ -211,7 +211,7 @@ const MeteorImageSearch = (props) => {
 
   return (
     <>
-    <div className="root__content" style={{width: "100vw"}}>
+    <div className="root__content" style={{backgroundColor: "rgba(3, 20, 38, 0.2)", width: "100vw"}}>
       <h1 style={{margin: "0.5rem"}}>
         {selectedDate ? `Search - ${selectedDate}` : "Featured Images"}
       </h1>
