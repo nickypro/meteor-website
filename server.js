@@ -19,6 +19,8 @@ var {
 
 var updateImagesDatabase = require('./mysql-functions/updateImagesDatabase')
 
+const labels = require('./labels.json')
+
 //Logger
 const logger = (req, res, next) => {
   console.log(`${new Date().toUTCString()} - ${req.method} ${req.path} - ${req.ip}`);
