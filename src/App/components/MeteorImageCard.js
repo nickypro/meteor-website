@@ -6,11 +6,6 @@ import LabelPicker from './LabelPicker'
 const MeteorImageCard = (props) => {
   const path = `${window.location.origin}/images${props.data.filePath}` 
   
-  const submitLabel = (labelValue) => {
-    if (props.submitLabel) {
-      props.submitLabel(props.data.filePath, labelValue)
-    }
-  }
   return (
   <div>
   <div style={{display: "flex", flexDirection: "column", margin: "1rem"}}>
@@ -21,7 +16,7 @@ const MeteorImageCard = (props) => {
     </div>
 
     <Card style={cardStyling}>
-    <a href={path}>
+    <a href={path} target="_blank">
       <img className="meteor-image" src={path}/>
     </a>
     <button 
@@ -41,7 +36,12 @@ const MeteorImageCard = (props) => {
           <li>{props.data.info}</li>
         }
       </ul>
-      <LabelPicker submit={submitLabel}/>
+      <LabelPicker 
+        imageId={props.data.filePath}
+        submit={props.sendLabel}
+        disabled={!!props.userLabel}
+        value={props.userLabel ? props.userLabel : undefined}
+      />
     </div>
     <br/>
     </Card>

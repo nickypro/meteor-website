@@ -42,7 +42,9 @@ const ImageCarousel = (props) => {
         key={`meteor_card_${index}`}
         data={item} 
         starred={props.userMeteorInfo[item.filePath] && props.userMeteorInfo[item.filePath].starred}
+        userLabel={props.userMeteorInfo[item.filePath] && props.userMeteorInfo[item.filePath].label}
         toggleStar={() => props.toggleStar(item.filePath)}
+        sendLabel={props.sendLabel}
       />
     ))}
 
