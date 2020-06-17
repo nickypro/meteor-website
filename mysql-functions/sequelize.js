@@ -106,19 +106,22 @@ const DayWithImage = sequelize.define('day_with_image', {
   timestamps: false,
 })
 
-Image.findByClosestTime = async function (date, number = 5, flag = "") {
+Image.findByClosestTime = async function (date, number = 5, flag = "", filters = {}) {
   try {
     //make date MySQL friendly
     const sqlDate = dateformat(date, "yyyy-mm-dd HH:MM:ss", true)
+    const label = filters.label
 
     const query = 
     `SELECT * FROM (
       ( SELECT *, TIMESTAMPDIFF(SECOND, '${sqlDate}', date) AS diff
           FROM images WHERE date >= '${sqlDate}'
+          ${label ? `AND label = '${label}'` : ""}
           ORDER BY date ASC LIMIT ${(flag==="BEFORE")? 1 : number}
       ) UNION ( 
         SELECT *, TIMESTAMPDIFF(SECOND, '${sqlDate}', date) AS diff
           FROM images where date < '${sqlDate}'
+          ${label ? `AND label = '${label}'` : ""}
           ORDER BY date DESC LIMIT ${(flag==="AFTER")? 0 : number}
       )
     ) foo

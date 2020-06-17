@@ -54,8 +54,11 @@ app.get('/api/images-by-date', async (req, res) => {
     const number = req.query.number ? req.query.number : 8
     console.log(time, flag)
 
+    const label = req.query.label
+    const filters = label ? {label} : {}
+
     //look through database for the closest 
-    const listOfImages = await Image.findByClosestTime( time , number , flag )
+    const listOfImages = await Image.findByClosestTime( time , number , flag , filters)
     if (!listOfImages) {
       return res.send("Could not get data") 
     }
@@ -66,11 +69,13 @@ app.get('/api/images-by-date', async (req, res) => {
 app.get('/api/images-by-stars', async (req, res) => {
     console.log(req.query)
     const page = req.query.page ? req.query.page : 0  
+    const label = req.query.label
 
     const images = await Image.findAll({ 
       offset: 8 * page ,
       limit: 8 ,
-      order: [['stars', 'DESC']]
+      order: [['stars', 'DESC']],
+      where: (label) ? {label: label} : undefined,
     }) 
     return res.json(images)
 })
