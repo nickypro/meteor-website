@@ -73,7 +73,7 @@ const MeteorImageSearch = (props) => {
         break;
     }
 
-    const useLabelFilter = options.labelFilter || labelFilter || null
+    const useLabelFilter = (options.flag == "FILTER_CHANGE") ? options.labelFilter : labelFilter || null
     if (useLabelFilter) {
       query += `label=${useLabelFilter}&`
     }
@@ -103,9 +103,7 @@ const MeteorImageSearch = (props) => {
       list.maxDate = list[list.length-1].date
       console.log("min date: ", list.minDate)
       console.log("max date: ", list.maxDate)
-      } else {
-        list = []
-      }
+      } 
 
       setImages(list)
     }
@@ -149,7 +147,7 @@ const MeteorImageSearch = (props) => {
 
   const handleLabelFilterChange = (newLabel) => {
     setLabelFilter(newLabel)
-    getImages({labelFilter: newLabel})
+    getImages({labelFilter: newLabel, flag: "FILTER_CHANGE"})
   }
 
   //change page if in featured view
