@@ -80,6 +80,40 @@ app.get('/api/days-with-data', async (req, res) => {
     return res.json(days)
 })
 
+app.post('/api/submit-label', async (req, res) => {
+  try {
+
+    const id = req.query.id
+    const label = req.query.label
+    if (!id | !label) return;
+    
+    const imageData = await LabelPoints.findOrCreate({where: {filePath: id}})
+    const imagePoints = imageData[0].dataValues
+    imagePoints[label] += 1
+    
+    LabelPoints.increment(label, {where: {filePath: id}})
+
+    let max = 0
+    let maxLabel
+    for (L of labels) {
+      if (imagePoints[L] > max) {
+        maxLabel = L
+        max = imagePoints[L]
+      }  
+    }
+    console.log(`${id} : MAX IS ${maxLabel} - ${max}`)
+
+    await Image.update({label: maxLabel}, {where: {filePath: id}})
+
+    res.sendStatus(200)
+
+  } catch (err) {
+    console.log(err.message)
+    res.sendStatus(403)
+  }
+
+})
+
 app.post('/api/toggle-star', async (req, res) => {
   try {
     if (!req.query.id && !req.query.action) throw {message: "id or action not found"}
