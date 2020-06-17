@@ -4,6 +4,7 @@ import axios from 'axios';
 import Card from '@material-ui/core/Card'
 import ListItem from '@material-ui/core/ListItem';
 import {Element} from 'react-scroll'
+import dateFormat from 'dateformat'
 
 import ImageCarousel from './MeteorImagesCarousel';
 import DatePicker from './DatePicker'
@@ -248,9 +249,10 @@ const MeteorImageSearch = (props) => {
       {images.map(img => {
         return (
           <div key={img.filePath}>
-            <a href={img.filePath}>
-              <ListItem button>
-                {img.date} 
+            <a href={img.filePath} className="meteor-list-item">
+              <ListItem button className="meteor-list-item">
+                {dateFormat(img.date, 'yyyy mmm dd - hh:MM:ss ')}
+                {img.label || "unlabeled"} 
               </ListItem> 
             </a>
           </div>
