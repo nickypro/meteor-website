@@ -1,18 +1,17 @@
 import React from 'react'
 
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect'
 import Button from '@material-ui/core/Button'
 
 const labels = require('../labels.json')
 
 
 const LabelPicker = (props) => {
-  const [value, setValue] = React.useState()
+  const [value, setValue] = (props.value !== undefined) ? [props.value, props.setValue] : React.useState()
   
-  const handleChange = (newValue) => {
+  const handleChange = (event) => {
+    const newValue = event.target.value
     
     setValue(newValue)
 
@@ -20,23 +19,19 @@ const LabelPicker = (props) => {
   }
 
   return (
-  <FormControl style={{width: "100%", display: "flex", flexDirection: "row"}}>
-    <InputLabel id="demo-simple-select-label"> Choose Label: </InputLabel>
-    
-    <Select
+  <FormControl style={{width: "100%", display: "flex", flexDirection: "row", alignItems: "center"}}>    
+    <NativeSelect
       style={{flex: 10}}
-      labelId="demo-simple-select-label"
-      id="demo-simple-select"
       value={value}
       onChange={handleChange}
       >
         <option value="">Choose A Label</option>
       
-      {labels.map(labelOption => {
-        return <MenuItem value={labelOption}>{labelOption}</MenuItem>
-      })}
+      {labels.map(labelOption => {return (
+        <option key={labelOption} value={labelOption}>{labelOption}</option>
+      )})}
 
-    </Select>
+    </NativeSelect>
     
     {props.submit &&
       <Button style={{flex: 1}} onClick={() => props.submit(value)}> 
