@@ -10,7 +10,13 @@ var serverDir = path.join(__dirname, 'dist');
 var express = require('express');
 var app = express();
 
-var {Image, DayWithImage, sequelize} = require('./mysql-functions/sequelize')
+var {
+  Image, 
+  DayWithImage, 
+  LabelPoints, 
+  sequelize
+} = require('./mysql-functions/sequelize')
+
 var updateImagesDatabase = require('./mysql-functions/updateImagesDatabase')
 
 //Logger
