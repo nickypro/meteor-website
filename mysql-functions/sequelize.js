@@ -106,11 +106,13 @@ const DayWithImage = sequelize.define('day_with_image', {
   timestamps: false,
 })
 
-Image.findByClosestTime = async function (date, number = 5, flag = "", filters = {}) {
+Image.findByClosestTime = async function (date, options) {
   try {
     //make date MySQL friendly
     const sqlDate = dateformat(date, "yyyy-mm-dd HH:MM:ss", true)
-    const label = filters.label
+    const number = options.number || 5
+    const flag   = options.flag || "" 
+    const label  = options.filters.label
 
     const query = 
     `SELECT * FROM (
