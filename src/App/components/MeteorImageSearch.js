@@ -103,6 +103,8 @@ const MeteorImageSearch = (props) => {
       list.maxDate = list[list.length-1].date
       console.log("min date: ", list.minDate)
       console.log("max date: ", list.maxDate)
+      } else {
+        list = []
       }
 
       setImages(list)
