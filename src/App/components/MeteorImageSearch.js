@@ -28,6 +28,7 @@ const MeteorImageSearch = (props) => {
   
   const [selectedDate, setSelectedDate] = React.useState(null);
   const [page, setPage] = React.useState(0);
+  const [labelFilter, setLabelFilter] = React.useState(null)
 
   //set up request to get data from images
   const getImages = async (options = {}) => {
@@ -70,6 +71,11 @@ const MeteorImageSearch = (props) => {
 
         }
         break;
+    }
+
+    const useLabelFilter = options.labelFilter || labelFilter || null
+    if (useLabelFilter) {
+      query += `label=${useLabelFilter}&`
     }
 
     fetchImages(api, query)
@@ -135,6 +141,11 @@ const MeteorImageSearch = (props) => {
     setSelectedDate(newDate)
     getImages({when: newDate, flag: "DATE_CHANGE"})
     setPage(0)
+  }
+
+  const handleLabelFilterChange = (newLabel) => {
+    setLabelFilter(newLabel)
+    getImages({labelFilter: newLabel})
   }
 
   //change page if in featured view
@@ -208,7 +219,7 @@ const MeteorImageSearch = (props) => {
           onChange={handleDateChange}
           dotsUrl={`${window.location.origin}/api/days-with-data`}
         />
-        <LabelPicker />
+        <LabelPicker value={labelFilter} onChange={handleLabelFilterChange} />
       </Card>
       
       <div className="list-of-images">
