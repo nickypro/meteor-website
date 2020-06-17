@@ -58,7 +58,7 @@ app.get('/api/images-by-date', async (req, res) => {
     const filters = label ? {label} : {}
 
     //look through database for the closest 
-    const listOfImages = await Image.findByClosestTime( time , number , flag , filters)
+    const listOfImages = await Image.findByClosestTime( time, {number, flag, filters })
     if (!listOfImages) {
       return res.send("Could not get data") 
     }
