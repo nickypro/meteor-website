@@ -2,13 +2,24 @@ import React, { useState } from 'react';
 import Card from '@material-ui/core/Card'
 
 import Carousel from "react-slick"; 
+import Slider from '@material-ui/core/Slider'
 
 import MeteorImageCard from './MeteorImageCard';
+const TRANSITION_DURATION = 0;
 
 const ImageCarousel = (props) => {
+  const [index, setIndex] = useState(1)
+  const [ref, setRef] = useState({})
+
+  const handleIndexChange = (event, newIndex) => {
+    console.log(newIndex)
+
+    setIndex(newIndex)
+    ref.slickGoTo(newIndex)
+  }
+
   const carouselOptions = {
-    dots: true,
-    speed: 100,
+    speed: TRANSITION_DURATION,
     infinite: false,
     centerMode: true,
     focusOnSelect: true,
@@ -18,10 +29,17 @@ const ImageCarousel = (props) => {
     slidesToScroll: 1,
     initialSlide: 1,
     className: "slick-carousel",
+    afterChange: setIndex,
   }
 
   return (
-  <Carousel ref={carousel => props.setCarouselRef(carousel)} {...carouselOptions} >
+  <>
+  <Carousel  {...carouselOptions} 
+    ref={carousel => {
+      setRef(carousel); 
+      props.setCarouselRef(carousel)
+    }}
+    >
     
     {/* "Load Earlier" button*/}
     {props.getEarlier && 
@@ -62,6 +80,14 @@ const ImageCarousel = (props) => {
     }
 
   </Carousel>
+  <Slider 
+    class="carousel-slider"
+    min={0}
+    max={1 + (props.images && props.images.length)}
+    value={index} 
+    onChange={handleIndexChange}
+  />
+  </>
 )};
 
 const cardStyling = {
