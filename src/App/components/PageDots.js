@@ -8,6 +8,8 @@ const PageDots = (props) => {
     props.pages.map((page, index) => ({...page, isCurrent: (index === 0)}))
   )
 
+  const numberOfPages = props.pages.length || 0
+
   useScrollPosition( ({ prevPos, currPos }) => {
     let yNew = - currPos.y;
     let h = window.innerHeight
@@ -16,7 +18,9 @@ const PageDots = (props) => {
     props.pages.forEach((page, index) => {
       if ((index - 0.5)*h < yNew && yNew <= (index + 0.5)*h) dottedPage = index;
     })
-    if (yNew > h*(props.pages.length-1) ) dottedPage = props.page.length-1
+    if (yNew > h*(numberOfPages-1) ) {
+      dottedPage = numberOfPages-1
+    }
     
     if (dots[dottedPage].isCurrent === true) return
 
