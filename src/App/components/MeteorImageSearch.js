@@ -63,7 +63,7 @@ const MeteorImageSearch = (props) => {
       default:
         if ( isValidDate(selectedDate) ) {
           api = `images-by-date`
-          query = `when=${new Date(options.when).toISOString()}&`
+          query = `when=${new Date(selectedDate).toISOString()}&`
 
         } else {
           api = `images-by-stars`
