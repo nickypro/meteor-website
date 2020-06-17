@@ -20,6 +20,7 @@ var {
 var updateImagesDatabase = require('./mysql-functions/updateImagesDatabase')
 
 const labels = require('./labels.json')
+const DEFAULT_NUMBER = 42
 
 //Logger
 const logger = (req, res, next) => {
@@ -51,7 +52,7 @@ app.get('/api/images-by-date', async (req, res) => {
       flag = "AFTER"
     }   
     
-    const number = req.query.number ? req.query.number : 8
+    const number = req.query.number ? req.query.number : DEFAULT_NUMBER
     console.log(time, flag)
 
     const label = req.query.label
@@ -70,10 +71,11 @@ app.get('/api/images-by-stars', async (req, res) => {
     console.log(req.query)
     const page = req.query.page ? req.query.page : 0  
     const label = req.query.label
+    const number = req.query.number ? req.query.number : DEFAULT_NUMBER
 
     const images = await Image.findAll({ 
-      offset: 8 * page ,
-      limit: 8 ,
+      offset: number * page ,
+      limit: number ,
       order: [['stars', 'DESC']],
       where: (label) ? {label: label} : undefined,
     }) 
