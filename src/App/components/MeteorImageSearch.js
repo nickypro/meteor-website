@@ -112,6 +112,17 @@ const MeteorImageSearch = (props) => {
     }
   }
 
+  const sendLabel = (id, label) => {
+    console.log(props.userMeteorInfo[id])
+    if (!label) return
+    if (props.userMeteorInfo[id] && props.userMeteorInfo[id].label) return
+
+    props.setLabel(id, label)
+    document.getElementById(`select_${id}`).setAttribute("disabled", true)
+    document.getElementById(`select_send_${id}`).setAttribute("style", "display: none;")
+    axios.post(`${window.location.origin}/api/submit-label?id=${id}&label=${label}`)
+  }
+
   // update the date when calendar changes
   const handleDateChange = (newDate) => {
     setSelectedDate(newDate)
@@ -201,7 +212,7 @@ const MeteorImageSearch = (props) => {
           getLater={getLater}
           userMeteorInfo={props.userMeteorInfo}
           toggleStar={toggleStar}
-          changeLabel={props.changeLabel}
+          sendLabel={sendLabel}
         />
       </div>
     </div>
