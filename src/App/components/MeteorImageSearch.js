@@ -2,19 +2,12 @@ import React, {useEffect} from 'react'
 import axios from 'axios';
 
 import Card from '@material-ui/core/Card'
-import ListItem from '@material-ui/core/ListItem';
 import {Element} from 'react-scroll'
-import dateFormat from 'dateformat'
 
 import ImageCarousel from './MeteorImagesCarousel';
 import DatePicker from './DatePicker'
 import { useLocaleSetsState } from '../functions/hooks'
 import LabelPicker from './LabelPicker';
-
-const config = require('../../../config.json')
-const imageDomain = config.imageDomain || window.location.origin
-const imagePath = config.imageUrl || "images"
-const imgUrl = `${imageDomain}/${imagePath}`
 
 const cardStyling = {
   padding: "1rem 2rem", 
@@ -243,29 +236,6 @@ const MeteorImageSearch = (props) => {
           sendLabel={sendLabel}
         />
       </div>
-    </div>
-  </Element>
-  <Element name="meteor-images-list">
-    <div className="root__content" style={{width: "100vw"}}>
-      <Card style={cardStyling} className="meteor-list">
-      <h3>
-        List of Images
-      </h3>
-      {images.map(img => {
-        return (
-          <div key={img.filePath}>
-            <a href={`${imgUrl}${img.filePath}`} className="meteor-list-item" target="_blank">
-              <ListItem button className="meteor-list-item">
-                {dateFormat(img.date, 'yyyy mmm dd - hh:MM:ss ')}
-                {img.label || "unlabeled"} 
-              </ListItem> 
-            </a>
-          </div>
-        ) 
-      })
-
-      }
-      </Card> 
     </div>
   </Element>
   </>

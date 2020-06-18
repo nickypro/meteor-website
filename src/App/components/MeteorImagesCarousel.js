@@ -5,11 +5,15 @@ import Carousel from "react-slick";
 import Slider from '@material-ui/core/Slider'
 
 import MeteorImageCard from './MeteorImageCard';
+import Button from '@material-ui/core/Button';
+import ListDialog from './ListDialog'
+
 const TRANSITION_DURATION = 0;
 
 const ImageCarousel = (props) => {
   const [index, setIndex] = useState(1)
   const [ref, setRef] = useState({})
+  const [listOpen, setListOpen] = useState(false)
 
   const handleIndexChange = (event, newIndex) => {
     console.log(newIndex)
@@ -86,6 +90,16 @@ const ImageCarousel = (props) => {
     max={1 + (props.images && props.images.length)}
     value={index} 
     onChange={handleIndexChange}
+  />
+  <Button onClick={() => setListOpen(true)}>
+    LIST
+  </Button>
+  <ListDialog 
+    open={listOpen} 
+    onClose={() => setListOpen(false)} 
+    images={props.images}
+    index={index}
+    setIndex={handleIndexChange}
   />
   </>
 )};
