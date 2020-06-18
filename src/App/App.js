@@ -43,11 +43,13 @@ const App = () => {
       </div>
     </Element>
 
-    <MeteorImageSearch id="meteor-images" 
-      userMeteorInfo={userMeteorInfo} 
-      toggleStar={toggleStar} 
-      setLabel={setLabel}
-    />
+    <Element name="meteor-images">
+      <MeteorImageSearch id="meteor-images" 
+        userMeteorInfo={userMeteorInfo} 
+        toggleStar={toggleStar} 
+        setLabel={setLabel}
+      />
+    </Element>
     
   </main>
   )
