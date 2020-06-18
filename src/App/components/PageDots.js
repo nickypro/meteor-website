@@ -4,6 +4,7 @@ import {Link as ScrollLink} from 'react-scroll'
 import "../assets/css/PageDots.css"
 
 const PageDots = (props) => {
+  const [hideText, setHideText] = React.useState(false)
   const [dots, setDots] = React.useState(
     props.pages.map((page, index) => ({...page, isCurrent: (index === 0)}))
   )
@@ -13,6 +14,8 @@ const PageDots = (props) => {
   useScrollPosition( ({ prevPos, currPos }) => {
     let yNew = - currPos.y;
     let h = window.innerHeight
+
+    console.log(yNew)
 
     let dottedPage = 0;
     props.pages.forEach((page, index) => {
@@ -24,6 +27,14 @@ const PageDots = (props) => {
     
     if (dots[dottedPage].isCurrent === true) return
 
+    if (window.innerWidth > 500 | yNew < 10) {
+      if (hideText)  setHideText(false)
+
+    } else {
+      if (!hideText) setHideText(true)
+
+    }
+
     setDots(props.pages.map((page, index) => ({...page, isCurrent: (index === dottedPage) }) ))
   })
 
@@ -32,7 +43,11 @@ const PageDots = (props) => {
     {dots.map((dot, index) =>
       <div key={`dot_${index}`}>
         <ScrollLink to={dot.id} smooth={true} duration={500}>
-          <div className="side-dot" style={(dot.isCurrent ? {opacity: 1} : {})}>{dot.section}</div>
+          <div className="side-dot" style={(dot.isCurrent ? {opacity: 1} : {})}>
+            <span style={hideText ? {display: "none"} : {}}>
+              {dot.section}
+            </span>
+          </div>
         </ScrollLink>
       </div>
     )}
