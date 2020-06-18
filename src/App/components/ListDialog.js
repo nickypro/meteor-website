@@ -54,9 +54,9 @@ const ListDialog = (props) => {
                 className="meteor-list-item"
                 onClick={() => changeIndex(index)}
                 >
+                {index === props.index ? ' \u2B24 ' : ""}
                 {dateFormat(img.date, 'yyyy mmm dd - hh:MM:ss ')}
                 {img.label || "unlabeled"} 
-                {index === props.index ? ' \u26AB' : ""}
               </ListItem> 
             </div>
           ) 
