@@ -91,7 +91,7 @@ const ImageCarousel = (props) => {
     value={index} 
     onChange={handleIndexChange}
   />
-  <Button onClick={() => setListOpen(true)}>
+  <Button onClick={() => setListOpen(true)} style={{marginTop: "0.5rem"}}>
     LIST
   </Button>
   <ListDialog 
