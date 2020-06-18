@@ -25,7 +25,7 @@ const ImageCarousel = (props) => {
   const carouselOptions = {
     speed: TRANSITION_DURATION,
     infinite: false,
-    centerMode: true,
+    centerMode: false,
     focusOnSelect: true,
     lazyLoad: "progressive",
     edgeFriction: 0,

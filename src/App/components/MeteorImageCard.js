@@ -60,8 +60,9 @@ const textMarginStyling = {width: "80%", margin: "0px auto"}
 
 const cardStyling = {
   position: "relative",
-  maxWidth: "80vw",
+  maxWidth: "90vw",
   background: "rgb(34, 54, 76)",
+  margin: "0px auto",
 }
 
 export default MeteorImageCard
