@@ -10,7 +10,8 @@ const imgUrl = `${imageDomain}/${imagePath}`
 
 const MeteorImageCard = (props) => {
   const path = `${imgUrl}${props.data.filePath}` 
-  
+  const cam = config.cameras[props.data.camera] || props.data.camera
+  const label = props.data.label || "Unlabeled"
   return (
   <div>
   <div style={{display: "flex", flexDirection: "column", margin: "1rem"}}>
@@ -33,10 +34,8 @@ const MeteorImageCard = (props) => {
       &#9733;
     </button>
     <div style={textMarginStyling}>
-      <h2 style={{textAlign: "center"}}>{props.data.label || "Meteor Image"}</h2>
+      <h2 style={{textAlign: "center"}}>{cam} - {label}</h2>
       <ul>
-        <li> Cam  : {props.data.camera} </li>
-        <li> Label: {props.data.label || "unlabeled"}  </li>
         {props.data.info && 
           <li>{props.data.info}</li>
         }
