@@ -8,5 +8,8 @@
     "other"
   ],
   "imageDomain": "",
-  "imagePath": "images"
+  "imagePath": "images",
+  "cameras": {
+    "FF_IE0001": "Dunsink"
+  }
 }
