@@ -86,7 +86,7 @@ const ImageCarousel = (props) => {
 
   </Carousel>
   <Slider 
-    class="carousel-slider"
+    className="carousel-slider"
     min={0}
     max={1 + (props.images && props.images.length)}
     value={index} 

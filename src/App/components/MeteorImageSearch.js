@@ -28,7 +28,7 @@ const MeteorImageSearch = (props) => {
   
   const [selectedDate, setSelectedDate] = React.useState(null);
   const [page, setPage] = React.useState(0);
-  const [labelFilter, setLabelFilter] = React.useState(null)
+  const [labelFilter, setLabelFilter] = React.useState("")
 
   //set up request to get data from images
   const getImages = async (options = {}) => {

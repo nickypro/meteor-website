@@ -9,7 +9,7 @@ const config = require('../../config.json')
 const labels = config.labels
 
 const LabelPicker = (props) => {
-  const [localValue, setLocalValue] = React.useState()
+  const [localValue, setLocalValue] = React.useState("")
   const [value, setValue] = (props.value !== undefined) ? [props.value, props.setValue] : [localValue, setLocalValue]
   
   const handleChange = (event) => {
