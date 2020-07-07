@@ -1,4 +1,4 @@
-const config = require('./config.json')
+const config = require('./src/config.json')
 const labels = config.labels
 
 const DIR = __dirname //path to folder where images are stored
@@ -8,7 +8,7 @@ var path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, './.env') })
 
 var imagesDir = path.join(DIR, FOLDER_NAME);
-var serverDir = path.join(__dirname, 'dist');
+var serverDir = path.join(__dirname, 'build');
 
 var express = require('express');
 var app = express();

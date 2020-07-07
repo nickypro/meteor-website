@@ -8,12 +8,13 @@ import MeteorImageCard from './MeteorImageCard';
 import Button from '@material-ui/core/Button';
 import ListDialog from './ListDialog'
 
-const TRANSITION_DURATION = 0;
+const TRANSITION_DURATION = 100;
 
 const ImageCarousel = (props) => {
   const [index, setIndex] = useState(1)
   const [ref, setRef] = useState({})
   const [listOpen, setListOpen] = useState(false)
+  const [delay, setDelay] = useState(0)
 
   const handleIndexChange = (event, newIndex) => {
     console.log(newIndex)
@@ -23,7 +24,7 @@ const ImageCarousel = (props) => {
   }
 
   const carouselOptions = {
-    speed: TRANSITION_DURATION,
+    speed: delay,
     infinite: false,
     centerMode: false,
     focusOnSelect: true,

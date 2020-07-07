@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close';
 
-const config = require('../../../config.json')
+const config = require('../../config.json')
 const imageDomain = config.imageDomain || window.location.origin
 const imagePath = config.imageUrl || "images"
 const imgUrl = `${imageDomain}/${imagePath}`
@@ -40,7 +40,7 @@ const ListDialog = (props) => {
       List of Images
     </DialogTitle>
     <DialogContent 
-      dividers={scroll === 'paper'} 
+      dividers='paper' 
       style={{...cardStyling, borderTop: "1px solid rgba(0, 0, 0, 0.3)"}}
       >
     

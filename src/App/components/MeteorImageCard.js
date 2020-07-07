@@ -3,7 +3,7 @@ import Card from '@material-ui/core/Card'
 import dateFormat from 'dateformat'
 import LabelPicker from './LabelPicker'
 
-const config = require('../../../config.json')
+const config = require('../../config.json')
 const imageDomain = config.imageDomain || window.location.origin
 const imagePath = config.imageUrl || "images"
 const imgUrl = `${imageDomain}/${imagePath}`

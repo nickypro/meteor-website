@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-snapshot';
 import App from './App/App'
 import 'regenerator-runtime/runtime'
 import { createMuiTheme } from "@material-ui/core";
@@ -11,7 +11,7 @@ const theme = createMuiTheme({
   }
 });
 
-ReactDOM.render(
+render(
   <ThemeProvider theme={theme}>
     <App/>
   </ThemeProvider>
