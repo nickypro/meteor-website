@@ -39,8 +39,8 @@ const App = () => {
       </div>
     </Element>
 
-    <Element name="meteor-images">
-      <MeteorImageSearch id="meteor-images" 
+    <Element name="meteor-images" id="meteor-images">
+      <MeteorImageSearch 
         userMeteorInfo={userMeteorInfo} 
         toggleStar={toggleStar} 
         setLabel={setLabel}
