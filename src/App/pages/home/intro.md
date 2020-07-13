@@ -11,7 +11,9 @@ April 2020 saw the start of a Royal Society Public Engagement grant to expand th
 We are currently assembling and testing the systems at Dunsink.
 
 <figure>
-<img src="images/dunsink_radio_cameras_greyday.jpg" alt="The Dunsink Meteor Cameras and Radio Antenna (2016)" width=300/>
-<img src="images/AllSky_fireball_20200206.png" alt="A fireball from February 2020 captured with the new AllSky camera" width="400"/>
+<div class="images-row">
+<img src="images/dunsink_radio_cameras_greyday.jpg" alt="The Dunsink Meteor Cameras and Radio Antenna (2016)"/>
+<img src="images/AllSky_fireball_20200206.png" alt="A fireball from February 2020 captured with the new AllSky camera"/>
+</div>
 <figcaption>The Dunsink Meteor Cameras and Radio Antenna (left) and a fireball from February 2020 captured with the new AllSky camera (right)</figcaption>
 </figure>

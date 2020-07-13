@@ -52,17 +52,13 @@ Students from North and South Dublin and Kildare have participated in our TY Wee
 We are strongly supported by volunteers during these weeks, including Michael O'Connell, Mike Foylan, David Malone, and DIAS staff and scholars.
 
 <figure>
-<img src="images/TYWeek2017_studentsworking.jpg" alt="TY students hard at work during the 2017 Dunsink Observatory Transition Year Science Week" width=300/>
-<img src="images/TYWeek2018_small.jpg" alt="Group photo from the 2018 TY Science Week." width="205"/>
+<div class="images-row">
+<img src="images/TYWeek2017_studentsworking.jpg" alt="TY students hard at work during the 2017 Dunsink Observatory Transition Year Science Week"/>
+<img src="images/TYWeek2018_small.jpg" alt="Group photo from the 2018 TY Science Week."/>
+</div>
 <figcaption>TY students hard at work during the 2017 Dunsink Observatory Transition Year Science Week (left) and a group photo from the 2018 TY Science Week (right).</figcaption>
 </figure>
 
-
-
-<figure>
-<img src="images/TYWeek2018_small.jpg" alt="Group photo from the 2018 TY Science Week."/>
-<figcaption>Group photo from the 2018 TY Science Week.</figcaption>
-</figure>
 
 
 In 2018 Mark Molloy from IT Sligo based his 4th Year Bachelor Thesis in Computer Science on developing a machine-learning algorithm to classify images from the Dunsink meteor cameras according to whether they contained a meteor or not.
@@ -79,31 +75,33 @@ We are grateful to our funders for supporting Citizen Science and Education at D
  * The NEMETODE cameras were installed in 2016 thanks to a Science Week grant from [Science Foundation Ireland](https://www.sfi.ie/).
  * In 2020 we received a grant from the Royal Society Public Engagement Fund to build up our online presence and start to build an all-Ireland network of all-sky cameras.
 
-<img src="logos/RoyalSocietyLogo_border.jpg" alt="The Royal Society" width="400"/>
-<img src="logos/SFI_logo_2015_border.jpg" alt="Science Foundation Ireland" width="300"/>
+<div class="images-row">
+<img src="logos/RoyalSocietyLogo_border.jpg" alt="The Royal Society"/>
+<img src="logos/SFI_logo_2015_border.jpg" alt="Science Foundation Ireland"/>
+</div>
 
 [Try to arrange the images so that they are the same height and side-by-side. If it is difficult use this merged image below:]
 
 <img src="logos/joined_logos.jpg" alt="Science Foundation Ireland and The Royal Society Logos" width="600"/>
 
 Many thanks also to the diverse group of people who have supported the Dunsink meteor observation and related educational activities over the years: 
-[Michael O'Connell](http://www.astroshot.com/), 
-[Mike Foylan](https://britastro.org/user/328), 
-[William Stewart](https://twitter.com/nemetodemeteor), 
-[David Malone](https://twitter.com/dwmal1), 
-Hilary O'Donnell, 
-[Sam Green](https://www.dias.ie/2017/10/02/astrostaff-sam-green/), 
-[Maria Moutzouri](https://www.dias.ie/2017/10/17/astrostaff-maria-moutzouri/), 
-[Samuel McKeague](https://twitter.com/samuelmckeague), 
-[Sarah Joyce](https://twitter.com/s_arahjoyce), 
-[Nicky Pochinkov](http://pesvut.netsoc.ie/), 
-[Jonathan Mackey](https://homepages.dias.ie/jmackey/), 
-[John Flannery](https://twitter.com/theskybyeye), 
-[Peter Stewart](http://www.nemetode.org/NEMETODE%20Team/Peter%20Stewart.htm), 
-[Gordon Reineke](http://www.nemetode.org/NEMETODE%20Team/Gordon%20Reineke.htm), 
-[Kevin Smith](http://www.nemetode.org/NEMETODE%20Team/Kevin%20Smith.htm), 
-[Rachael Ainsworth](https://twitter.com/rachaelevelyn), 
-[Camille Stock](https://www.dias.ie/2017/10/19/astrostaff-camille-stock/), 
-[Luke Drury](https://twitter.com/Luke_Drury), 
-and the [NEMETODE team](http://www.nemetode.org/overview%20and%20history.htm).
++ [Michael O'Connell](http://www.astroshot.com/), 
++ [Mike Foylan](https://britastro.org/user/328), 
++ [William Stewart](https://twitter.com/nemetodemeteor), 
++ [David Malone](https://twitter.com/dwmal1), 
++ Hilary O'Donnell, 
++ [Sam Green](https://www.dias.ie/2017/10/02/astrostaff-sam-green/), 
++ [Maria Moutzouri](https://www.dias.ie/2017/10/17/astrostaff-maria-moutzouri/), 
++ [Samuel McKeague](https://twitter.com/samuelmckeague), 
++ [Sarah Joyce](https://twitter.com/s_arahjoyce), 
++ [Nicky Pochinkov](http://pesvut.netsoc.ie/), 
++ [Jonathan Mackey](https://homepages.dias.ie/jmackey/), 
++ [John Flannery](https://twitter.com/theskybyeye), 
++ [Peter Stewart](http://www.nemetode.org/NEMETODE%20Team/Peter%20Stewart.htm), 
++ [Gordon Reineke](http://www.nemetode.org/NEMETODE%20Team/Gordon%20Reineke.htm), 
++ [Kevin Smith](http://www.nemetode.org/NEMETODE%20Team/Kevin%20Smith.htm), 
++ [Rachael Ainsworth](https://twitter.com/rachaelevelyn), 
++ [Camille Stock](https://www.dias.ie/2017/10/19/astrostaff-camille-stock/), 
++ [Luke Drury](https://twitter.com/Luke_Drury), 
++ and the [NEMETODE team](http://www.nemetode.org/overview%20and%20history.htm).
 

@@ -36,3 +36,23 @@ html, body {
   position: absolute;
   z-index: -1;   
 }
+
+.images-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+
+.images-row img {
+  margin: 0.1rem;
+}
+
+figcaption {
+  font-style: italic;
+}
+
+figure {
+  text-align: center;
+}
