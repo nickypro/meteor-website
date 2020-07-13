@@ -80,10 +80,6 @@ We are grateful to our funders for supporting Citizen Science and Education at D
 <img src="logos/SFI_logo_2015_border.jpg" alt="Science Foundation Ireland"/>
 </div>
 
-[Try to arrange the images so that they are the same height and side-by-side. If it is difficult use this merged image below:]
-
-<img src="logos/joined_logos.jpg" alt="Science Foundation Ireland and The Royal Society Logos" width="600"/>
-
 Many thanks also to the diverse group of people who have supported the Dunsink meteor observation and related educational activities over the years: 
 + [Michael O'Connell](http://www.astroshot.com/), 
 + [Mike Foylan](https://britastro.org/user/328), 
