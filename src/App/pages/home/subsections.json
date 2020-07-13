@@ -1,0 +1,23 @@
+[{ 
+    "section": "Title",
+    "id": "title"
+  },{
+    "section": "Introduction",
+    "id": "introduction-and-history"
+  },{
+    "section": "Images",
+    "id": "meteor-images"
+  },{
+    "section": "Instrumentation",
+    "id": "instrumentation"
+  },{
+    "section": "Citizen Science",
+    "id": "citizen-science"
+  },{
+    "section": "Education & Research",
+    "id": "education-and-research"
+  },{
+    "section": "Funding",
+    "id": "funding"
+  }
+]

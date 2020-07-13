@@ -7,7 +7,7 @@ import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 
 const staticList = [
-  {name: "about", title:"About Us"},
+  //{name: "about", title:"About Us"},
   //{name: "test",  title:"Test Page"},
 ]
 
@@ -21,9 +21,6 @@ const App = () => {
   return (  
   <ThemeProvider theme={theme}>
   <Router>
-    <nav>
-      <a>navigation</a>
-    </nav>
     <Switch>
       {staticList.map(item => 
         <Route 
