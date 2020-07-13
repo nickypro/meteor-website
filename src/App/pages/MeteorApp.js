@@ -14,6 +14,17 @@ import '../assets/css/slick.css'
 
 import '../assets/css/App.css'
 
+import VisibilitySensor from 'react-visibility-sensor'
+/*
+function Element (props) {
+  return (
+    <VisibilitySensor onChange={onChange}>
+      <div>...content goes here...</div>
+    </VisibilitySensor>
+  );
+}
+/**/
+
 const subsections = require('./home/subsections.json')
 
 const App = () => {
@@ -23,25 +34,36 @@ const App = () => {
   const [intro, setIntro] = React.useState("Loading content")
   const introDataPath = require(`./home/intro.md`)
   
-  const [content, setContent] = React.useState("Loading content")
+  const [contentList, setContentList] = React.useState(["Loading content"])
   const contentDataPath = require(`./home/content.md`)
-    
-  fetch(contentDataPath)
-    .then(response => {
-      return response.text()
-    })
-    .then(text => 
-      setContent( marked(text) ) 
-    )
   
-  fetch(introDataPath)
-    .then(response => {
-      return response.text()
-    })
-    .then(text => 
-      setIntro( marked(text) ) 
-    )
+  React.useEffect(() => {
 
+    fetch(contentDataPath)
+      .then(response => {
+        return response.text()
+      })
+      .then(text => {
+        const blocks = text.split(/(?=\n[a-zA-Z0-9\-\s_]+\n-------+)/)
+          .filter(str => str.length > 1)
+          .map(text => marked(text))
+
+        blocks.forEach(item => console.log(item))
+
+        setContentList( blocks ) 
+      })
+    
+    fetch(introDataPath)
+      .then(response => {
+        return response.text()
+      })
+      .then(text => 
+        setIntro( marked(text) ) 
+      )
+    
+    },[]
+  )
+  
   return (
   <main>
     <Background />
@@ -70,11 +92,13 @@ const App = () => {
       />
     </Element>
     
+    {contentList.map(content =>
     <Element>
       <Card style={cardStyling}>
         <article dangerouslySetInnerHTML={{__html: content}}/>
       </Card>
     </Element>
+    )}
 
   </main>
   )
@@ -89,7 +113,7 @@ const cardStyling = {
   width: "95vw",
   maxWidth: "800px",
   background: "rgb(34, 54, 76)",
-  margin: "0px auto",
+  margin: "1rem auto",
 }
 
 export default App
