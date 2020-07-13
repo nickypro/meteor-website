@@ -6,14 +6,14 @@
   "proxy": "http://pesvut.ng.netsoc.ie:57988",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && react-snapshot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "DIAS - Nicky Pochinkov",
   "reactSnapshot": {
     "include": [
-      "/about"
+      "/"
     ],
     "snapshotDelay": 50
   },
@@ -43,6 +43,7 @@
     "react-slick": "^0.26.1",
     "react-snap": "^1.23.0",
     "react-snapshot": "^1.3.0",
+    "react-visibility-sensor": "^5.1.1",
     "sequelize": "^5.21.13",
     "slick-carousel": "^1.8.1"
   },
