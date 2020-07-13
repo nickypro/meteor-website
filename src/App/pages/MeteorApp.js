@@ -5,7 +5,8 @@ import Card from '@material-ui/core/Card'
 
 import {useLocaleStateUserMeteorInfo } from '../functions/hooks'
 
-import {Link as ScrollLink, Element} from 'react-scroll'
+import {Link as ScrollLink} from 'react-scroll'
+import ScrollElement from '../components/ScrollElement'
 import PageDots from '../components/PageDots'
 import MeteorImageSearch from '../components/MeteorImageSearch'
 import "slick-carousel/slick/slick.css";
@@ -14,18 +15,10 @@ import '../assets/css/slick.css'
 
 import '../assets/css/App.css'
 
-import VisibilitySensor from 'react-visibility-sensor'
-/*
-function Element (props) {
-  return (
-    <VisibilitySensor onChange={onChange}>
-      <div>...content goes here...</div>
-    </VisibilitySensor>
-  );
-}
-/**/
 
 const subsections = require('./home/subsections.json')
+
+const getId = (text) => text.match(/id="(.*)"+?/) && text.match(/id="(.*)"+?/)[1]
 
 const App = () => {
   const [userMeteorInfo, setUserMeteorInfo, toggleStar, setLabel] = 
@@ -36,7 +29,21 @@ const App = () => {
   
   const [contentList, setContentList] = React.useState(["Loading content"])
   const contentDataPath = require(`./home/content.md`)
-  
+
+  const [visibleSet, setVisibleSet] = React.useState(new Set())
+
+  function handleVisChange(name, isVisible) {
+    console.log(name, isVisible)
+    const tempSet = visibleSet
+    if (isVisible) {
+      tempSet.add(name)
+    } else {
+      tempSet.delete(name)
+    }
+    setVisibleSet(tempSet)
+    console.log(tempSet)
+  }
+
   React.useEffect(() => {
 
     fetch(contentDataPath)
@@ -44,13 +51,12 @@ const App = () => {
         return response.text()
       })
       .then(text => {
-        const blocks = text.split(/(?=\n[a-zA-Z0-9\-\s_]+\n-------+)/)
+        const blocks = text.split(/\n(?=.+\n-------+)/)
           .filter(str => str.length > 1)
           .map(text => marked(text))
 
-        blocks.forEach(item => console.log(item))
-
         setContentList( blocks ) 
+      
       })
     
     fetch(introDataPath)
@@ -67,37 +73,37 @@ const App = () => {
   return (
   <main>
     <Background />
-    <PageDots pages={subsections}/>
+    <PageDots pages={subsections} visible={visibleSet}/>
     
-    <Element name="title">
+    <ScrollElement name="title" onChange={handleVisChange}>
       <div className="root__content">
         <h1 style={{textAlign: "center", fontSize: "4rem"}}>Meteor Images</h1>
         <ScrollLink to={subsections[1].id} smooth={true} duration={500}>
           <h1 className="scroll-down-icon"> &#709; </h1>
         </ScrollLink>
       </div>
-    </Element>
+    </ScrollElement>
 
-    <Element>
+    <ScrollElement name="intro" onChange={handleVisChange}>
       <Card style={cardStyling}>
         <article dangerouslySetInnerHTML={{__html: intro}}/>
       </Card>
-    </Element>
+    </ScrollElement>
 
-    <Element name="meteor-images" id="meteor-images">
+    <ScrollElement name="meteor-images" onChange={handleVisChange} id="meteor-images" >
       <MeteorImageSearch 
         userMeteorInfo={userMeteorInfo} 
         toggleStar={toggleStar} 
         setLabel={setLabel}
       />
-    </Element>
+    </ScrollElement>
     
     {contentList.map(content =>
-    <Element>
+    <ScrollElement name={ getId(content) } onChange={handleVisChange}>
       <Card style={cardStyling}>
         <article dangerouslySetInnerHTML={{__html: content}}/>
       </Card>
-    </Element>
+    </ScrollElement>
     )}
 
   </main>
