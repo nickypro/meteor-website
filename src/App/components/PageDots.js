@@ -33,7 +33,7 @@ const PageDots = (props) => {
   <div className={"side-dot-container " + (hideText && " side-dots-mobile ") }>
     {dots.map((dot, index) =>
       <div key={`dot_${index}`}>
-        <ScrollLink to={dot.id} smooth={true} duration={500}>
+        <ScrollLink to={dot.id} smooth={true} duration={500} offset={hideText ? -30 : 0}>
           <div className="side-dot" style={(dot.isCurrent ? {opacity: 1} : {})}>
             <span style={hideText ? {display: "none"} : {}}>
               {dot.section}

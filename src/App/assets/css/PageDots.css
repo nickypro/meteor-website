@@ -12,8 +12,9 @@
   flex-direction: row;
   left: initial;
   top: 0px;
+  left: 0px;
+  right: 0px;
   background-color: #112;
-  width: 100vw;
   justify-content: center;
   padding-bottom: 0.2rem;
   box-shadow: 0px 1px 1px white;
@@ -42,4 +43,14 @@
 
 .side-dot:hover {
   opacity: 0.8;
+}
+
+.side-dots-mobile .side-dot {
+  width:  1rem;
+  height: 1rem;
+}
+
+.side-dots-mobile .side-dot::before {
+  width:  1.2rem;
+  height: 1.2rem;
 }

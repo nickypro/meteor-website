@@ -29,6 +29,11 @@
   margin-bottom: 1rem;
 }
 
+.meteor-images-search {
+  width: 95vw;
+  margin: 0px auto;
+}
+
 .MuiPaper-root {
   background: rgb(34, 54, 76); 
 }

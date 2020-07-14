@@ -47,6 +47,7 @@ html, body {
 
 .images-row img {
   margin: 0.1rem;
+  max-width: 100% !important;
 }
 
 figcaption {
@@ -55,4 +56,18 @@ figcaption {
 
 figure {
   text-align: center;
+  max-width: 95vw;
+  padding: 0px;
+  margin: 0px;
+}
+
+@media screen and (max-width: 800px) {
+  .images-row {
+    display: block;
+    flex-direction: column;
+  }
+
+  .images-row img {
+    flex: auto;
+  }
 }
