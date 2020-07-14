@@ -30,7 +30,7 @@ const PageDots = (props) => {
   })
 
   return (
-  <div className="side-dot-container">
+  <div className={"side-dot-container " + (hideText && " side-dots-mobile ") }>
     {dots.map((dot, index) =>
       <div key={`dot_${index}`}>
         <ScrollLink to={dot.id} smooth={true} duration={500}>

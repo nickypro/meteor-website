@@ -8,6 +8,17 @@
   z-index: 100;
 }
 
+.side-dots-mobile {
+  flex-direction: row;
+  left: initial;
+  top: 0px;
+  background-color: #112;
+  width: 100vw;
+  justify-content: center;
+  padding-bottom: 0.2rem;
+  box-shadow: 0px 1px 1px white;
+}
+
 .side-dot {
   opacity: 0.5;
   cursor: pointer;
