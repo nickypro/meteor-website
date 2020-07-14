@@ -16,7 +16,7 @@ import '../assets/css/slick.css'
 import '../assets/css/App.css'
 
 
-const subsections = require('./home/subsections.json')
+const subsections = require('../../subsections.json')
 
 const getId = (text) => text.match(/id="(.*)"+?/) && text.match(/id="(.*)"+?/)[1]
 
@@ -25,10 +25,10 @@ const App = () => {
     useLocaleStateUserMeteorInfo("user_selections");
 
   const [intro, setIntro] = React.useState("Loading content")
-  const introDataPath = require(`./home/intro.md`)
+  const introDataPath = `/home/intro.md`
   
   const [contentList, setContentList] = React.useState(["Loading content"])
-  const contentDataPath = require(`./home/content.md`)
+  const contentDataPath = `/home/content.md`
 
   const [visibleSet, setVisibleSet] = React.useState(new Set())
 
