@@ -7,9 +7,9 @@ const FOLDER_NAME = "/images" //name of folder where images are stored
 var path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, './.env') })
 
-var imagesDir = path.join(DIR, FOLDER_NAME);
 var serverDir = path.join(__dirname, 'build');
 
+const DEFAULT_NUMBER = 42
 var express = require('express');
 var app = express();
 
@@ -20,9 +20,13 @@ var {
   sequelize
 } = require('./mysql-functions/sequelize')
 
-var updateImagesDatabase = require('./mysql-functions/updateImagesDatabase')
-
-const DEFAULT_NUMBER = 42
+if ( process.env.SERVE_IMAGES && process.env.SERVE_IMAGES != 0 ){
+  var imagesDir = path.join(DIR, FOLDER_NAME);
+  var updateImagesDatabase = require('./mysql-functions/updateImagesDatabase')
+  app.use('/images', express.static(imagesDir));
+  //initialise database with files
+  updateImagesDatabase(__dirname, "/images")
+}
 
 //Logger
 const logger = (req, res, next) => {
@@ -31,11 +35,8 @@ const logger = (req, res, next) => {
 }
 app.use(logger)
 
-app.use('/images', express.static(imagesDir));
+//serve the website
 app.use('/', express.static(serverDir));
-
-//initialise database with files
-updateImagesDatabase(__dirname, "/images")
 
 //handle requests looking for a certain asteroid /images-by-date?when=X&number=10
 app.get('/api/images-by-date', async (req, res) => { 
