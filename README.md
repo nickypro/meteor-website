@@ -27,4 +27,14 @@ Looks for RMS-style image files from AllSky/RaspberryPi, parses the camera name 
 "imagePath": "<FOLDER_TO_MATCH_DATABASE>",
 ```
 - build the server using `npm run build`
-- run the process with either `node server.js` or `npm start` (or create a systemd process with /usr/bin/node etc...)
+- run the process with either `node server.js` (or create a systemd process with /usr/bin/node etc...)
+
+## Updating
+- run the following command to update: 
+```
+git pull && \
+npm install && \
+npm audit fix && \
+npm run build
+```
+- start the server again `node server.js`
