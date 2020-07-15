@@ -67,37 +67,42 @@ The machine learning algorithm is excellent at excluding images that do not cont
 We are looking to develop this further and contribute to the many projects all over the world that are searching for meteors.
 
 
+Useful Meteor Links
+---------------------------
+
++ [The DIAS Meteor data image repository](https://meteors-data.ap.dias.ie/)
++ [The NEMETODE meteor network](http://www.nemetode.org/)
++ [International Meteor Organisation](https://www.imo.net/) and their [Fireball Report Programme](https://www.imo.net/observations/fireballs/fireball-report-program/)
++ [The Global Meteor Network](https://globalmeteornetwork.org/)
++ Fireball detection networks: [European Fireball Network](https://en.wikipedia.org/wiki/European_Fireball_Network),  [FRIPON in France](https://www.fripon.org/?lang=en), [SCAMP in the UK](https://ukmeteornetwork.co.uk/SCAMP/), [Desert Fireball Network in Australia](https://dfn.gfo.rocks/)
++ [American Meteor Society](https://www.amsmeteors.org/)
+
+
 Acknowledgements
 ----------------
 
-We are grateful to our funders for supporting Citizen Science and Education at Dunsink Observatory:
+We are grateful to our funders and volunteers for supporting Citizen Science and Education at Dunsink Observatory:
 
- * The NEMETODE cameras were installed in 2016 thanks to a Science Week grant from [Science Foundation Ireland](https://www.sfi.ie/).
- * In 2020 we received a grant from the Royal Society Public Engagement Fund to build up our online presence and start to build an all-Ireland network of all-sky cameras.
+ * The NEMETODE cameras were installed in 2016 thanks to [Jonathan Mackey's](https://homepages.dias.ie/jmackey/) Science Week grant from [Science Foundation Ireland](https://www.sfi.ie/) and lots of help from [NEMETODE](http://www.nemetode.org/overview%20and%20history.htm) members, especially [William Stewart](https://twitter.com/nemetodemeteor) and [Michael O'Connell](http://www.astroshot.com/).
+ * [Sam Green](https://www.dias.ie/2017/10/02/astrostaff-sam-green/) has led maintenance of the computers and cameras since 2016, and with  [Maria Moutzouri](https://www.dias.ie/2017/10/17/astrostaff-maria-moutzouri/) put together a workbook for the TY students.
+ * [David Malone](https://twitter.com/dwmal1) and to the [Institute of Physics in Ireland](http://www.iopireland.org/) and Paul Nugent have supported us in developing the educational programme.
+ * In 2020 [Jonathan Mackey](https://homepages.dias.ie/jmackey/) received a grant from the [Royal Society Public Engagement Fund](https://royalsociety.org/grants-schemes-awards/grants/public-engagement-fund/) to build up our online presence and start an all-Ireland network of all-sky cameras, in partnership with a number of other organisations.
+ * [Nicky Pochinkov](http://pesvut.netsoc.ie/) has been our Royal Society Summer Intern in Summer 2020 and created this website and the backend serving the data.
+ * Many thanks also to the diverse group of people who have supported the Dunsink meteor observation and related educational activities over the years:
+[Rachael Ainsworth](https://twitter.com/rachaelevelyn),
+[John Flannery](https://twitter.com/theskybyeye),
+[Mike Foylan](https://britastro.org/user/328),
+[Sarah Joyce](https://twitter.com/s_arahjoyce),
+[Samuel McKeague](https://twitter.com/samuelmckeague),
+[Gordon Reineke](http://www.nemetode.org/NEMETODE%20Team/Gordon%20Reineke.htm),
+[Kevin Smith](http://www.nemetode.org/NEMETODE%20Team/Kevin%20Smith.htm),
+[Peter Stewart](http://www.nemetode.org/NEMETODE%20Team/Peter%20Stewart.htm),
+[Camille Stock](https://www.dias.ie/2017/10/19/astrostaff-camille-stock/).
+ * Special thanks to [Hilary O'Donnell](https://www.dias.ie/2016/01/13/o-donnell-hilary/) for all of her work and support in starting and growing the project, and Dunsink Directors (past and present) [Luke Drury](https://twitter.com/Luke_Drury) and [Peter Gallagher](https://www.dias.ie/2018/10/10/astrostaff-professor-peter-gallagher/) for their support of citizen science at Dunsink.
 
 <div class="images-row">
 <img src="logos/RoyalSocietyLogo_border.jpg" alt="The Royal Society"/>
 <img src="logos/SFI_logo_2015_border.jpg" alt="Science Foundation Ireland"/>
 </div>
 
-Many thanks also to the diverse group of people who have supported the Dunsink meteor observation and related educational activities over the years: 
-+ [Michael O'Connell](http://www.astroshot.com/), 
-+ [Mike Foylan](https://britastro.org/user/328), 
-+ [William Stewart](https://twitter.com/nemetodemeteor), 
-+ [David Malone](https://twitter.com/dwmal1), 
-+ Hilary O'Donnell, 
-+ [Sam Green](https://www.dias.ie/2017/10/02/astrostaff-sam-green/), 
-+ [Maria Moutzouri](https://www.dias.ie/2017/10/17/astrostaff-maria-moutzouri/), 
-+ [Samuel McKeague](https://twitter.com/samuelmckeague), 
-+ [Sarah Joyce](https://twitter.com/s_arahjoyce), 
-+ [Nicky Pochinkov](http://pesvut.netsoc.ie/), 
-+ [Jonathan Mackey](https://homepages.dias.ie/jmackey/), 
-+ [John Flannery](https://twitter.com/theskybyeye), 
-+ [Peter Stewart](http://www.nemetode.org/NEMETODE%20Team/Peter%20Stewart.htm), 
-+ [Gordon Reineke](http://www.nemetode.org/NEMETODE%20Team/Gordon%20Reineke.htm), 
-+ [Kevin Smith](http://www.nemetode.org/NEMETODE%20Team/Kevin%20Smith.htm), 
-+ [Rachael Ainsworth](https://twitter.com/rachaelevelyn), 
-+ [Camille Stock](https://www.dias.ie/2017/10/19/astrostaff-camille-stock/), 
-+ [Luke Drury](https://twitter.com/Luke_Drury), 
-+ and the [NEMETODE team](http://www.nemetode.org/overview%20and%20history.htm).
 
