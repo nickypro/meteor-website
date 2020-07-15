@@ -15,7 +15,7 @@ import '../assets/css/slick.css'
 
 import '../assets/css/App.css'
 
-
+const config = require('../../config.json')
 const subsections = require('../../subsections.json')
 
 const getId = (text) => text.match(/id="(.*)"+?/) && text.match(/id="(.*)"+?/)[1]
@@ -77,7 +77,9 @@ const App = () => {
     
     <ScrollElement name="title" onChange={handleVisChange}>
       <div className="root__content">
-        <h1 style={{textAlign: "center", fontSize: "4rem"}}>Meteor Images</h1>
+        <h1 style={{textAlign: "center", fontSize: "4rem"}}>
+          {config.title || "Meteor Images"}
+        </h1>
         <ScrollLink to={subsections[1].id} smooth={true} duration={500}>
           <h1 className="scroll-down-icon"> &#709; </h1>
         </ScrollLink>
