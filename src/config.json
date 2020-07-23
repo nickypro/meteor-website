@@ -7,8 +7,8 @@
     "clouds",
     "other"
   ],
-  "imageDomain": "",
-  "imagePath": "images",
+  "imageDomain": "https://meteor-data.ap.dias.ie/",
+  "imagePath": "/meteors-data/",
   "cameras": {
     "FF_IE0001": "Dunsink"
   },
