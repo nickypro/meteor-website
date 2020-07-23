@@ -3,13 +3,15 @@ import Card from '@material-ui/core/Card'
 import dateFormat from 'dateformat'
 import LabelPicker from './LabelPicker'
 
+const path = require('path')
+
 const config = require('../../config.json')
 const imageDomain = config.imageDomain || window.location.origin
 const imagePath = config.imageUrl || "images"
-const imgUrl = `${imageDomain}/${imagePath}`
+const imgUrl = path.join(imageDomain, imagePath)
 
 const MeteorImageCard = (props) => {
-  const path = `${imgUrl}${props.data.filePath}` 
+  const imgPath = path.join(imgUrl, props.data.filePath) 
   const cam = config.cameras[props.data.camera] || props.data.camera
   const label = props.data.label || "Unlabeled"
   return (
@@ -22,8 +24,8 @@ const MeteorImageCard = (props) => {
     </div>
 
     <Card style={cardStyling}>
-    <a href={path} target="_blank">
-      <img className="meteor-image" src={path}/>
+    <a href={imgPath} target="_blank">
+      <img className="meteor-image" src={imgPath}/>
     </a>
     <button 
       id={`button_${props.data.filePath}`}
