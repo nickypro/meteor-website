@@ -9,6 +9,10 @@ import DatePicker from './DatePicker'
 import { useLocaleSetsState } from '../functions/hooks'
 import LabelPicker from './LabelPicker';
 
+const path = require('path')
+const config = require('../../config.json')
+const homepage = config.homepage
+
 const cardStyling = {
   padding: "1rem 2rem", 
   margin: "0.5rem",
@@ -29,6 +33,8 @@ const MeteorImageSearch = (props) => {
   const [selectedDate, setSelectedDate] = React.useState(null);
   const [page, setPage] = React.useState(0);
   const [labelFilter, setLabelFilter] = React.useState("")
+
+  const apiUrl = path.join( homepage, "/api/" )
 
   //set up request to get data from images
   const getImages = async (options = {}) => {
@@ -85,7 +91,7 @@ const MeteorImageSearch = (props) => {
   async function fetchImages(api, query = "") {
     //request data from /api/<chosen api>?querydata=data
     console.log(`Getting from ${api} with ?${query}`)
-    const response = await axios.get(`${window.location.origin}/api/${api}?${query}`)
+    const response = await axios.get(`${apiUrl}${api}?${query}`)
 
     if ( !(response.status==200) ){
       //if not successful, console.log the error
@@ -116,12 +122,12 @@ const MeteorImageSearch = (props) => {
 
     if (isNowStarred) {
       document.getElementById(`button_${id}`).classList.add("starred")
-      axios.post(`${window.location.origin}/api/toggle-star?id=${id}&action=ADD`)
+      axios.post(`${apiUrl}toggle-star?id=${id}&action=ADD`)
       return;
 
     } else {
       document.getElementById(`button_${id}`).classList.remove("starred")
-      axios.post(`${window.location.origin}/api/toggle-star?id=${id}&action=REMOVE`)
+      axios.post(`${apiUrl}toggle-star?id=${id}&action=REMOVE`)
       return;
 
     }
@@ -135,7 +141,7 @@ const MeteorImageSearch = (props) => {
     props.setLabel(id, label)
     document.getElementById(`select_${id}`).setAttribute("disabled", true)
     document.getElementById(`select_send_${id}`).setAttribute("style", "display: none;")
-    axios.post(`${window.location.origin}/api/submit-label?id=${id}&label=${label}`)
+    axios.post(`${apiUrl}submit-label?id=${id}&label=${label}`)
   }
 
   // update the date when calendar changes
@@ -219,7 +225,7 @@ const MeteorImageSearch = (props) => {
         <DatePicker 
           value={selectedDate} 
           onChange={handleDateChange}
-          dotsUrl={`${window.location.origin}/api/days-with-data`}
+          dotsUrl={`${apiUrl}days-with-data`}
         />
         <LabelPicker value={labelFilter} onChange={handleLabelFilterChange} />
       </Card>

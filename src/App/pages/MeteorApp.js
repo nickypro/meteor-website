@@ -17,6 +17,8 @@ import '../assets/css/App.css'
 
 const config = require('../../config.json')
 const subsections = require('../../subsections.json')
+const path = require('path')
+const homepage = config.homepage
 
 const getId = (text) => text.match(/id="(.*)"+?/) && text.match(/id="(.*)"+?/)[1]
 
@@ -25,10 +27,10 @@ const App = () => {
     useLocaleStateUserMeteorInfo("user_selections");
 
   const [intro, setIntro] = React.useState("Loading content")
-  const introDataPath = `/home/intro.md`
+  const introDataPath   = path.join(homepage, `/home/intro.md`)
   
   const [contentList, setContentList] = React.useState(["Loading content"])
-  const contentDataPath = `/home/content.md`
+  const contentDataPath = path.join(homepage, `/home/content.md`)
 
   const [visibleSet, setVisibleSet] = React.useState(new Set())
 
