@@ -50,10 +50,9 @@ homepages.forEach( homepage => {
 //Loop through homepages
 console.log("Adding route: ", homepage)
 //serve the website
-app.use(homepage, express.static(serverDir));
 
 //handle requests looking for a certain asteroid /images-by-date?when=X&number=10
-app.get(homepage + '/api/images-by-date', async (req, res) => { 
+app.get(path.join(homepage + '/api/images-by-date'), async (req, res) => { 
     let time = new Date();
     let flag = "";
 
@@ -84,7 +83,7 @@ app.get(homepage + '/api/images-by-date', async (req, res) => {
     res.json(listOfImages[0])
 })  
 
-app.get(homepage + '/api/images-by-stars', async (req, res) => {
+app.get(path.join(homepage + '/api/images-by-stars'), async (req, res) => {
     console.log(req.query)
     const page = req.query.page ? req.query.page : 0  
     const label = req.query.label
@@ -99,12 +98,12 @@ app.get(homepage + '/api/images-by-stars', async (req, res) => {
     return res.json(images)
 })
 
-app.get(homepage + '/api/days-with-data', async (req, res) => {
+app.get(path.join(homepage + '/api/days-with-data'), async (req, res) => {
     const days = await DayWithImage.findAll({})
     return res.json(days)
 })
 
-app.post(homepage + '/api/submit-label', async (req, res) => {
+app.post(path.join(homepage + '/api/submit-label'), async (req, res) => {
   try {
 
     const id = req.query.id
@@ -138,7 +137,7 @@ app.post(homepage + '/api/submit-label', async (req, res) => {
 
 })
 
-app.post(homepage + '/api/toggle-star', async (req, res) => {
+app.post(path.join(homepage + '/api/toggle-star'), async (req, res) => {
   try {
     if (!req.query.id && !req.query.action) throw {message: "id or action not found"}
     const id = req.query.id
