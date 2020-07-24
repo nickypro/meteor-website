@@ -14,7 +14,11 @@ var express = require('express');
 var app = express();
 
 const packagejson = require('./package.json')
-const homepage = packagejson.homepage || "/"
+let homepages = ["/"]
+if (packagejson.homepage) {
+  homepages = [packagejson.homepage, ...homepages]
+}
+console.log(homepages)
 
 var {
   Image, 
@@ -37,9 +41,15 @@ const logger = (req, res, next) => {
   next();
 }
 app.use(logger)
+ 
+//▒   ▒▒▒ ▒▒▒ ▒▒▒
+//▒   ▒ ▒ ▒ ▒ ▒_▒ Main App Routes Code
+//▒▒▒ ▒▒▒ ▒▒▒ ▒    
 
+homepages.forEach( homepage => {  
+//Loop through homepages
+console.log("Adding route: ", homepage)
 //serve the website
-app.use("/", express.static(serverDir));
 app.use(homepage, express.static(serverDir));
 
 //handle requests looking for a certain asteroid /images-by-date?when=X&number=10
@@ -149,6 +159,8 @@ app.post(homepage + '/api/toggle-star', async (req, res) => {
     res.sendStatus(403)
   }
 })
+
+}) // END OF LOOP THROUGH homepages
 
 app.listen(process.env.PORT || 80, function () {
     console.log(`Listening on http://localhost:${process.env.PORT || 80}/`);
