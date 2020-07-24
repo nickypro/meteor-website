@@ -50,6 +50,7 @@ homepages.forEach( homepage => {
 //Loop through homepages
 console.log("Adding route: ", homepage)
 //serve the website
+app.use(homepage, express.static(serverDir));
 
 //handle requests looking for a certain asteroid /images-by-date?when=X&number=10
 app.get(path.join(homepage + '/api/images-by-date'), async (req, res) => { 
