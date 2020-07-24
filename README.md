@@ -27,6 +27,9 @@ Looks for RMS-style image files from AllSky/RaspberryPi, parses the camera name 
   "imagePath": "/meteors-data/",
 ```
 - build the server using `npm run build`
+- (optional) change root homepage path from /meteors to something else: change in 
+`/package.json` `"homepage": "/meteors"` and 
+`/src/config.json` `"homapage": "/meteors"` 
 - run the process with either `node server.js` (or create a systemd process with /usr/bin/node etc...)
 
 ## Updating
