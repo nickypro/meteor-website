@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "proxy": "http://pesvut.ng.netsoc.ie:57988",
+  "homepage": "/meteors",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

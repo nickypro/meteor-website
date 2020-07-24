@@ -13,6 +13,9 @@ const DEFAULT_NUMBER = 42
 var express = require('express');
 var app = express();
 
+const packagejson = require('./package.json')
+const homepage = packagejson.homepage || "/"
+
 var {
   Image, 
   DayWithImage, 
@@ -36,7 +39,7 @@ const logger = (req, res, next) => {
 app.use(logger)
 
 //serve the website
-app.use('/', express.static(serverDir));
+app.use(homepage, express.static(serverDir));
 
 //handle requests looking for a certain asteroid /images-by-date?when=X&number=10
 app.get('/api/images-by-date', async (req, res) => { 
