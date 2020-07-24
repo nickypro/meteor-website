@@ -39,6 +39,7 @@ const logger = (req, res, next) => {
 app.use(logger)
 
 //serve the website
+app.use("/", express.static(serverDir));
 app.use(homepage, express.static(serverDir));
 
 //handle requests looking for a certain asteroid /images-by-date?when=X&number=10
