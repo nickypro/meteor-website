@@ -54,6 +54,7 @@ app.use(homepage, express.static(serverDir));
 
 //handle requests looking for a certain asteroid /images-by-date?when=X&number=10
 app.get(path.join(homepage + '/api/images-by-date'), async (req, res) => { 
+  try {
     let time = new Date();
     let flag = "";
 
@@ -82,9 +83,16 @@ app.get(path.join(homepage + '/api/images-by-date'), async (req, res) => {
     }
     console.log(`Found ${listOfImages[0].length} images closest to ${time}`)
     res.json(listOfImages[0])
+  
+    // Handle Errors
+  } catch (err) {
+    console.log("ERROR : ", err.message)
+    res.status(503).json(err)
+  }
 })  
 
 app.get(path.join(homepage + '/api/images-by-stars'), async (req, res) => {
+  try {
     console.log(req.query)
     const page = req.query.page ? req.query.page : 0  
     const label = req.query.label
@@ -97,16 +105,28 @@ app.get(path.join(homepage + '/api/images-by-stars'), async (req, res) => {
       where: (label) ? {label: label} : undefined,
     }) 
     return res.json(images)
+
+    // Handle Errors
+  } catch (err) {
+    console.log("ERROR : ", err.message)
+    res.status(503).json(err)
+  }
 })
 
 app.get(path.join(homepage + '/api/days-with-data'), async (req, res) => {
+  try {
     const days = await DayWithImage.findAll({})
     return res.json(days)
+
+    // Handle Errors
+  } catch (err) {
+    console.log("ERROR : ", err.message)
+    res.status(503).json(err)
+  }
 })
 
 app.post(path.join(homepage + '/api/submit-label'), async (req, res) => {
   try {
-
     const id = req.query.id
     const label = req.query.label
     if (!id | !label) return;
@@ -131,9 +151,10 @@ app.post(path.join(homepage + '/api/submit-label'), async (req, res) => {
 
     res.sendStatus(200)
 
+    // Handle Errors
   } catch (err) {
-    console.log(err.message)
-    res.sendStatus(403)
+    console.log("ERROR : ", err.message)
+    res.status(503).json(err)
   }
 
 })
@@ -154,9 +175,11 @@ app.post(path.join(homepage + '/api/toggle-star'), async (req, res) => {
       res.sendStatus(200)
     } 
     else throw {message: "action did not match"}
+  
+    // Handle Errors
   } catch (err) {
     console.log(`Unsuccessful Toggle Star : ${err.message}`)
-    res.sendStatus(403)
+    res.status(503).json(err)
   }
 })
 
