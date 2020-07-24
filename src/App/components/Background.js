@@ -4,7 +4,9 @@ import config from '../assets/config/particlesjs-config.json'
 
 function Background(props) {
   return <div className="background"> 
+  {/*
   <Particles params={config}/>
+  */}
   </div>
 }
 
