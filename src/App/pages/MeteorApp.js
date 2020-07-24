@@ -18,7 +18,7 @@ import '../assets/css/App.css'
 const config = require('../../config.json')
 const subsections = require('../../subsections.json')
 const path = require('path')
-const homepage = config.homepage
+const homepage = config.homepage || "/"
 
 const getId = (text) => text.match(/id="(.*)"+?/) && text.match(/id="(.*)"+?/)[1]
 
