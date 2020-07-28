@@ -7,7 +7,7 @@ const path = require('path')
 
 const config = require('../../config.json')
 const imageDomain = config.imageDomain || window.location.origin
-const imagePath = config.imageUrl || "images"
+const imagePath = config.imagePath || "images"
 const imgUrl = path.join(imageDomain, imagePath)
 
 const MeteorImageCard = (props) => {
