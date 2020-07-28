@@ -14,6 +14,7 @@ const MeteorImageCard = (props) => {
   const imgPath = path.join(imgUrl, props.data.filePath) 
   const cam = config.cameras[props.data.camera] || props.data.camera
   const label = props.data.label || "Unlabeled"
+  console.log(imgPath)
   return (
   <div>
   <div style={{display: "flex", flexDirection: "column", margin: "1rem"}}>
