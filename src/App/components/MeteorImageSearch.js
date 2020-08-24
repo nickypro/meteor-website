@@ -30,9 +30,13 @@ const MeteorImageSearch = (props) => {
   const [images, setImages] = React.useState([])
   const [carouselRef, setCarouselRef] = React.useState();
   
-  const [selectedDate, setSelectedDate] = React.useState(null);
-  const [page, setPage] = React.useState(0);
-  const [labelFilter, setLabelFilter] = React.useState("")
+  const [state, setState] = React.useState({
+    selectedDate: null,
+    minDate: null,
+    maxDate: null,
+    page: 0,
+    labelFilter: "",
+  })
 
   const apiUrl = path.join( homepage, "/api/" )
 
@@ -44,15 +48,15 @@ const MeteorImageSearch = (props) => {
     switch (options.flag) {
       case "EARLIER":
         api = `images-by-date`
-        query = `before=${images.minDate}&`
-        setSelectedDate(images.minDate)
+        query = `before=${state.minDate}&`
+        setState({...state, selectedDate: state.minDate})
         carouselRef.slickGoTo(images.length)
         break;
 
       case "LATER":
         api = `images-by-date`
-        query = `after=${images.maxDate}&`
-        setSelectedDate(images.maxDate)
+        query = `after=${state.maxDate}&`
+        setState({...state, selectedDate: state.maxDate})
         carouselRef.slickGoTo(1)
         break;
 
@@ -67,9 +71,9 @@ const MeteorImageSearch = (props) => {
         break;
         
       default:
-        if ( isValidDate(selectedDate) ) {
+        if ( isValidDate(state.selectedDate) ) {
           api = `images-by-date`
-          query = `when=${new Date(selectedDate).toISOString()}&`
+          query = `when=${new Date(state.selectedDate).toISOString()}&`
 
         } else {
           api = `images-by-stars`
@@ -79,7 +83,7 @@ const MeteorImageSearch = (props) => {
         break;
     }
 
-    const useLabelFilter = (options.flag == "FILTER_CHANGE") ? options.labelFilter : labelFilter || null
+    const useLabelFilter = (options.flag == "FILTER_CHANGE") ? options.labelFilter : state.labelFilter || null
     if (useLabelFilter) {
       query += `label=${useLabelFilter}&`
     }
@@ -105,10 +109,11 @@ const MeteorImageSearch = (props) => {
       list = list.sort((img1, img2) => 
         Number(new Date(img1.date)) - Number(new Date(img2.date)) 
       )
-      list.minDate = list[0].date
-      list.maxDate = list[list.length-1].date
-      console.log("min date: ", list.minDate)
-      console.log("max date: ", list.maxDate)
+      const minDate = list[0].date
+      const maxDate = list[list.length-1].date
+      console.log("min date: ", minDate)
+      console.log("max date: ", maxDate)
+      setState({...state, minDate, maxDate})
       } 
 
       setImages(list)
@@ -146,23 +151,26 @@ const MeteorImageSearch = (props) => {
 
   // update the date when calendar changes
   const handleDateChange = (newDate) => {
-    setSelectedDate(newDate)
+    setState({
+      ...state, 
+      selectedDate: newDate,
+      page: 0,
+    })
     getImages({when: newDate, flag: "DATE_CHANGE"})
-    setPage(0)
   }
 
   const handleLabelFilterChange = (newLabel) => {
-    setLabelFilter(newLabel)
+    setState({...state, labelFilter: newLabel})
     getImages({labelFilter: newLabel, flag: "FILTER_CHANGE"})
   }
 
   //change page if in featured view
   const changePageTo = (newPage) => {
-    setPage(newPage)
+    setState({...state, page: newPage})
     getImages({page: newPage, flag: "PAGE_CHANGE"})
 
     let newIndex = 1
-    if (newPage < page) newIndex += images.length - 1
+    if (newPage < state.page) newIndex += images.length - 1
     if (newPage === 0) newIndex -= 1
 
     setTimeout(() => carouselRef.slickGoTo( newIndex ), 200)
@@ -176,7 +184,7 @@ const MeteorImageSearch = (props) => {
   //on images change, move carousel to closest value
   useEffect(() => {
     if (!images) return;
-    if (!selectedDate) return;
+    if (!state.selectedDate) return;
     
     //get the index of the closest value
     let minIndex = 0;
@@ -196,20 +204,20 @@ const MeteorImageSearch = (props) => {
 
   // function control for buttons 
   function getEarlier() {
-    if(selectedDate) {
+    if(state.selectedDate) {
       return getImages({flag: "EARLIER"})
     }
-    if (page) {
-      return changePageTo(page-1)
+    if (state.page) {
+      return changePageTo(state.page-1)
     }
   }
 
   function getLater() {
-    if (selectedDate) {
+    if (state.selectedDate) {
       return getImages({flag: "LATER"})
     }
     else {
-      return changePageTo(page-0+1)
+      return changePageTo(state.page-0+1)
     }
   }
 
@@ -217,22 +225,22 @@ const MeteorImageSearch = (props) => {
   <>
     <div className="root__content meteor-images-search" style={{backgroundColor: "rgba(3, 20, 38, 0.2)", width: "100vw"}}>
       <h1 style={{margin: "0.5rem"}}>
-        {selectedDate ? `Search - ${selectedDate}` : "Featured Images"}
+        {state.selectedDate ? `Search - ${state.selectedDate}` : "Featured Images"}
       </h1>
 
       <Card style={cardStyling}>
         <span>Options </span>
         <DatePicker 
-          value={selectedDate} 
+          value={state.selectedDate} 
           onChange={handleDateChange}
           dotsUrl={`${apiUrl}days-with-data`}
         />
-        <LabelPicker value={labelFilter} onChange={handleLabelFilterChange} />
+        <LabelPicker value={state.labelFilter} onChange={handleLabelFilterChange} />
       </Card>
       
       <div className="list-of-images">
         <ImageCarousel 
-          images={images} 
+          images={images || []} 
           setCarouselRef={setCarouselRef} 
           getEarlier={getEarlier}
           getLater={getLater}
