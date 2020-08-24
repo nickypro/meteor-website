@@ -10,7 +10,8 @@
   "imageDomain": "http://meteors-data.ap.dias.ie/",
   "imagePath": "/meteors-data/",
   "cameras": {
-    "FF_IE0001": "Dunsink"
+    "FF_IE0001": "Dunsink Pointed",
+    "FF_IE0002": "Dunsink Allsky"
   },
   "homepage": "/meteors",
   "title": "DIAS Dunsink Meteor Observation" 
