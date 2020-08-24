@@ -47,16 +47,18 @@ const MeteorImageSearch = (props) => {
     
     switch (options.flag) {
       case "EARLIER":
+        const minDate = state.minDate || images[0].date
         api = `images-by-date`
-        query = `before=${state.minDate}&`
-        setState({...state, selectedDate: state.minDate})
+        query = `before=${minDate}&`
+        setState({...state, selectedDate: minDate})
         carouselRef.slickGoTo(images.length)
         break;
 
       case "LATER":
+        const maxDate = state.maxDate || images[images.length-1].date
         api = `images-by-date`
-        query = `after=${state.maxDate}&`
-        setState({...state, selectedDate: state.maxDate})
+        query = `after=${maxDate}&`
+        setState({...state, selectedDate: maxDate})
         carouselRef.slickGoTo(1)
         break;
 
