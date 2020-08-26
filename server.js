@@ -131,11 +131,11 @@ app.post(path.join(homepage + '/api/submit-label'), async (req, res) => {
     const label = req.query.label
     if (!id | !label) return;
     
-    const imageData = await LabelPoints.findOrCreate({where: {filePath: id}})
+    const imageData = await LabelPoints.findOrCreate({where: {fileName: id}})
     const imagePoints = imageData[0].dataValues
     imagePoints[label] += 1
     
-    LabelPoints.increment(label, {where: {filePath: id}})
+    LabelPoints.increment(label, {where: {fileName: id}})
 
     let max = 0
     let maxLabel
@@ -147,7 +147,7 @@ app.post(path.join(homepage + '/api/submit-label'), async (req, res) => {
     }
     console.log(`${id} : MAX IS ${maxLabel} - ${max}`)
 
-    await Image.update({label: maxLabel}, {where: {filePath: id}})
+    await Image.update({label: maxLabel}, {where: {fileName: id}})
 
     res.sendStatus(200)
 
@@ -166,12 +166,12 @@ app.post(path.join(homepage + '/api/toggle-star'), async (req, res) => {
     const action = req.query.action
     if (action === "ADD") {
       console.log(`Adding Star to ${id}`)
-      Image.update({ stars : sequelize.literal('stars + 1') }, { where: { filePath: req.query.id } });
+      Image.update({ stars : sequelize.literal('stars + 1') }, { where: { fileName: req.query.id } });
       res.sendStatus(200)
     } 
     else if (action === "REMOVE") {
       console.log(`Removing Star from ${id}`)
-      Image.update({ stars : sequelize.literal('stars - 1') }, { where: { filePath: req.query.id } });
+      Image.update({ stars : sequelize.literal('stars - 1') }, { where: { fileName: req.query.id } });
       res.sendStatus(200)
     } 
     else throw {message: "action did not match"}
