@@ -125,6 +125,7 @@ const MeteorImageSearch = (props) => {
   //toggle star and update card to have filled/infilled star & send POST to api 
   const toggleStar = (id) => {
 
+    console.log(`toggling star for ${id}`)
     const isNowStarred = props.toggleStar(id).starred
 
     if (isNowStarred) {
@@ -142,12 +143,16 @@ const MeteorImageSearch = (props) => {
 
   const sendLabel = (id, label) => {
     console.log(props.userMeteorInfo[id])
-    if (!label) return
-    if (props.userMeteorInfo[id] && props.userMeteorInfo[id].label) return
+    if (!label) 
+      return console.log(`no label selected`)
+    if (props.userMeteorInfo[id] && props.userMeteorInfo[id].label) 
+      return console.log(`label aready exists for ${id}`)
 
     props.setLabel(id, label)
     document.getElementById(`select_${id}`).setAttribute("disabled", true)
     document.getElementById(`select_send_${id}`).setAttribute("style", "display: none;")
+     
+    console.log(`added label ${label} to image ${id}`)
     axios.post(`${apiUrl}submit-label?id=${id}&label=${label}`)
   }
 
