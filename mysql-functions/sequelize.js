@@ -17,9 +17,13 @@ sequelize
 
 const Image = sequelize.define('image', {
   //folder, file, path: folderPath(folder), date, camera}
+  fileName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    primaryKey: true,
+  },
   filePath: {
     type: Sequelize.STRING,
-    primaryKey: true,
     allowNull: false,
   },
   date: {
@@ -44,7 +48,7 @@ const Image = sequelize.define('image', {
   indexes:[
     {
       unique: true,
-      fields:['filePath']
+      fields:['fileName']
     },{
       unique: false,
       fields:['date']
@@ -56,9 +60,13 @@ const Image = sequelize.define('image', {
 });
 
 const LabelPoints = sequelize.define('image_points', {
+  fileName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    primaryKey: true,
+  },
   filePath: {
     type: Sequelize.STRING,
-    primaryKey: true,
     allowNull: false,
   },
   meteor: {
@@ -90,7 +98,7 @@ const LabelPoints = sequelize.define('image_points', {
   indexes:[
     {
       unique: true,
-      fields:['filePath']
+      fields:['fileName']
     }
   ]
 })

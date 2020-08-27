@@ -29,7 +29,7 @@ const MeteorImageCard = (props) => {
       <img className="meteor-image" src={imgPath}/>
     </a>
     <button 
-      id={`button_${props.data.filePath}`}
+      id={`button_${props.data.fileName}`}
       className={`slick-star ${props.starred ? "starred" : ""}`} 
       onClick={props.toggleStar}
       htmlFor="favourite meteor"
@@ -44,7 +44,7 @@ const MeteorImageCard = (props) => {
         }
       </ul>
       <LabelPicker 
-        imageId={props.data.filePath}
+        imageId={props.data.fileName}
         submit={props.sendLabel}
         disabled={!!props.userLabel}
         value={props.userLabel ? props.userLabel : undefined}

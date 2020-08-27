@@ -7,6 +7,7 @@ const labels = config.labels
 
 const LabelPicker = (props) => {
   return <Picker 
+    imageId={props.imageId}
     value={props.value}
     onChange={props.onChange}
     submit={props.submit}
