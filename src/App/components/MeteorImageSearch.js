@@ -95,6 +95,7 @@ const MeteorImageSearch = (props) => {
 
   //get data about images 
   async function fetchImages(api, query = "") {
+  try {
     //request data from /api/<chosen api>?querydata=data
     console.log(`Getting from ${api} with ?${query}`)
     const response = await axios.get(`${apiUrl}${api}?${query}`)
@@ -120,6 +121,9 @@ const MeteorImageSearch = (props) => {
 
       setImages(list)
     }
+  } catch(err) {
+    console.error(err.message)
+  }
   }
 
   //toggle star and update card to have filled/infilled star & send POST to api 
