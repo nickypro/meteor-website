@@ -36,7 +36,7 @@ const MeteorImageSearch = (props) => {
     maxDate: null,
     page: 0,
     labelFilter: "",
-    starFilter: 0,
+    minStars: 0,
   })
 
   const apiUrl = path.join( homepage, "/api/" )
@@ -92,7 +92,7 @@ const MeteorImageSearch = (props) => {
       query += `label=${useLabelFilter}&`
     }
     if (useMinStarsFilter) {
-      query += `label=${useMinStarsFilter}&`
+      query += `minstars=${useMinStarsFilter}&`
     }
 
     fetchImages(api, query)
@@ -181,12 +181,18 @@ const MeteorImageSearch = (props) => {
   }
 
   const handleMinStarsChange = (event) => {
-    const newValue = event.target.value
-    console.log(newValue)
-    if (typeof newValue !== typeof 1) return
+    try {
+      const newValue = Number(event.target.value)
+      console.log(newValue)
+      if ( newValue < 0 ) return
+  
+      setState({...state, minStars: newValue})
+      getImages({minStars: newValue, flag: "MINSTARS_CHANGE"})
 
-    setState({...state, minStars: newValue})
-    getImages({minStars: newValue, flag: "MINSTARS_CHANGE"})
+    } catch(err) {
+      console.error(err.message)
+    
+    }
   }
 
   //change page if in featured view
@@ -267,8 +273,8 @@ const MeteorImageSearch = (props) => {
             type="number" 
             placeholder="0 (show all)" 
             className="options-input"
-            style={{width: "5rem"}}
-            value={state.value}
+            style={{width: "6rem"}}
+            value={state.minStars}
             onChange={handleMinStarsChange}
           />
         </label>
