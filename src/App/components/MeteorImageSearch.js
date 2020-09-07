@@ -36,6 +36,7 @@ const MeteorImageSearch = (props) => {
     maxDate: null,
     page: 0,
     labelFilter: "",
+    starFilter: 0,
   })
 
   const apiUrl = path.join( homepage, "/api/" )
@@ -86,8 +87,12 @@ const MeteorImageSearch = (props) => {
     }
 
     const useLabelFilter = (options.flag == "FILTER_CHANGE") ? options.labelFilter : state.labelFilter || null
+    const useMinStarsFilter = (options.flag == "MINSTARS_CHANGE") ? options.minStars : state.minStars || null
     if (useLabelFilter) {
       query += `label=${useLabelFilter}&`
+    }
+    if (useMinStarsFilter) {
+      query += `label=${useMinStarsFilter}&`
     }
 
     fetchImages(api, query)
@@ -175,6 +180,15 @@ const MeteorImageSearch = (props) => {
     getImages({labelFilter: newLabel, flag: "FILTER_CHANGE"})
   }
 
+  const handleMinStarsChange = (event) => {
+    const newValue = event.target.value
+    console.log(newValue)
+    if (typeof newValue !== typeof 1) return
+
+    setState({...state, minStars: newValue})
+    getImages({minStars: newValue, flag: "MINSTARS_CHANGE"})
+  }
+
   //change page if in featured view
   const changePageTo = (newPage) => {
     setState({...state, page: newPage})
@@ -247,6 +261,17 @@ const MeteorImageSearch = (props) => {
           dotsUrl={`${apiUrl}days-with-data`}
         />
         <LabelPicker value={state.labelFilter} onChange={handleLabelFilterChange} />
+        <label >
+          Min Stars
+          <input 
+            type="number" 
+            placeholder="0 (show all)" 
+            className="options-input"
+            style={{width: "5rem"}}
+            value={state.value}
+            onChange={handleMinStarsChange}
+          />
+        </label>
       </Card>
       
       <div className="list-of-images">
