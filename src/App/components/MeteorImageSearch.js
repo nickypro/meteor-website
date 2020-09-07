@@ -261,7 +261,7 @@ const MeteorImageSearch = (props) => {
           dotsUrl={`${apiUrl}days-with-data`}
         />
         <LabelPicker value={state.labelFilter} onChange={handleLabelFilterChange} />
-        <label >
+        <label  className="options-label">
           Min Stars
           <input 
             type="number" 

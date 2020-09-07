@@ -70,3 +70,19 @@
   text-decoration: none !important;
   list-style-type: disc;
 }
+
+.options-label {
+  margin: 0.5rem 0rem 0rem; 
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+.options-input {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 0.2rem ;
+  font-size: 1.1rem;
+}
