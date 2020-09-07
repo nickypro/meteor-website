@@ -26,6 +26,7 @@ var {
   LabelPoints, 
   sequelize
 } = require('./mysql-functions/sequelize')
+const Op = require('sequelize').Op; //sequelise operators such as <= or IN ...
 
 if ( process.env.SERVE_IMAGES && process.env.SERVE_IMAGES != 0 ){
   var imagesDir = path.join(DIR, FOLDER_NAME);
@@ -73,8 +74,13 @@ app.get(path.join(homepage + '/api/images-by-date'), async (req, res) => {
     const number = req.query.number ? req.query.number : DEFAULT_NUMBER
     console.log(time, flag)
 
+    //add filters (labels, minstars, etc...)
     const label = req.query.label
-    const filters = label ? {label} : {}
+    const minstars = Number(req.query.minstars) || 0
+    
+    const filters = {}
+    if (label) filters.label = label 
+    if (minstars) filters.stars = {[Op.gte]: minstars};
 
     //look through database for the closest 
     const listOfImages = await Image.findByClosestTime( time, {number, flag, filters })
@@ -96,13 +102,18 @@ app.get(path.join(homepage + '/api/images-by-stars'), async (req, res) => {
     console.log(req.query)
     const page = req.query.page ? req.query.page : 0  
     const label = req.query.label
+    const minstars = Number(req.query.minstars) || 0
     const number = req.query.number ? req.query.number : DEFAULT_NUMBER
+
+    const whereQuery = {}
+    if (label) whereQuery.label = label
+    if (minstars) whereQuery.stars = {[Op.gte]: minstars};
 
     const images = await Image.findAll({ 
       offset: number * page ,
       limit: number ,
       order: [['stars', 'DESC']],
-      where: (label) ? {label: label} : undefined,
+      where: (whereQuery) ? whereQuery : undefined,
     }) 
     return res.json(images)
 
