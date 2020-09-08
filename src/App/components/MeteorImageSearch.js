@@ -8,10 +8,12 @@ import ImageCarousel from './MeteorImagesCarousel';
 import DatePicker from './DatePicker'
 import { useLocaleSetsState } from '../functions/hooks'
 import LabelPicker from './LabelPicker';
+import Picker from './Picker'
 
 const path = require('path')
 const config = require('../../config.json')
 const homepage = config.homepage
+const cameras = config.cameras 
 
 const cardStyling = {
   padding: "1rem 2rem", 
@@ -89,9 +91,13 @@ const MeteorImageSearch = (props) => {
     }
 
     const useLabelFilter = (options.flag == "FILTER_CHANGE") ? options.labelFilter : state.labelFilter || null
+    const useCameraFilter = (options.flag == "CAMERA_CHANGE") ? options.cameraFilter : state.cameraFilter || null
     const useMinStarsFilter = (options.flag == "MINSTARS_CHANGE") ? options.minStars : state.minStars || null
     if (useLabelFilter) {
       query += `label=${useLabelFilter}&`
+    }
+    if (useCameraFilter) {
+      query += `camera=${useCameraFilter}&`
     }
     if (useMinStarsFilter) {
       query += `minstars=${useMinStarsFilter}&`
@@ -182,6 +188,11 @@ const MeteorImageSearch = (props) => {
     getImages({labelFilter: newLabel, flag: "FILTER_CHANGE"})
   }
 
+  const handleCameraFilterChange = (newCamera) => {
+    setState({...state, cameraFilter: newCamera})
+    getImages({cameraFilter: newCamera, flag: "CAMERA_CHANGE"})
+  }
+
   const handleMinStarsChange = (event) => {
     try {
       const newValue = Number(event.target.value)
@@ -269,6 +280,12 @@ const MeteorImageSearch = (props) => {
           dotsUrl={`${apiUrl}days-with-data`}
         />
         <LabelPicker value={state.labelFilter} onChange={handleLabelFilterChange} />
+        <Picker 
+          value={state.cameraFilter}
+          onChange={handleCameraFilterChange}
+          choices={cameras}
+          placeholder={"Filter by Camera"}
+        />
         <label  className="options-label">
           Min Stars
           <input 
