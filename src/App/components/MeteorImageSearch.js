@@ -32,11 +32,13 @@ const MeteorImageSearch = (props) => {
   
   const [state, setState] = React.useState({
     selectedDate: null,
-    minDate: null,
-    maxDate: null,
     page: 0,
     labelFilter: "",
     minStars: 0,
+  })
+  const [listProperties, setListProperties] = React.useState({
+    minDate: null,
+    maxDate: null,
   })
 
   const apiUrl = path.join( homepage, "/api/" )
@@ -48,7 +50,7 @@ const MeteorImageSearch = (props) => {
     
     switch (options.flag) {
       case "EARLIER":
-        const minDate = state.minDate || images[0].date
+        const minDate = listProperties.minDate || images[0].date
         api = `images-by-date`
         query = `before=${minDate}&`
         setState({...state, selectedDate: minDate})
@@ -56,7 +58,7 @@ const MeteorImageSearch = (props) => {
         break;
 
       case "LATER":
-        const maxDate = state.maxDate || images[images.length-1].date
+        const maxDate = listProperties.maxDate || images[images.length-1].date
         api = `images-by-date`
         query = `after=${maxDate}&`
         setState({...state, selectedDate: maxDate})
@@ -121,7 +123,7 @@ const MeteorImageSearch = (props) => {
       const maxDate = list[list.length-1].date
       console.log("min date: ", minDate)
       console.log("max date: ", maxDate)
-      setState({...state, minDate, maxDate})
+      setListProperties({...state, minDate, maxDate})
       } 
 
       setImages(list)
