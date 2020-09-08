@@ -29,9 +29,22 @@ const Picker = (props) => {
       >
         <option value="">{props.placeholder || "Choose an Option"}</option>
       
-      {choices.map(choice => 
+      {
+      // if array like ["tree", "cloud"] map simply
+        choices instanceof Array 
+      ? choices.map(choice => 
         <option key={choice} value={choice}>{choice}</option>
-      )}
+      )
+      
+      // elif object like {"id": "label", "IE02" : "AllSky"} map like so
+      : choices instanceof Object 
+      ? Object.keys(choices).map(id =>
+        <option key={id} value={id}>{choices[id]}</option>
+      )
+
+      //else null
+      : null
+      }
 
     </NativeSelect>
     
