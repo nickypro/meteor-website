@@ -120,18 +120,25 @@ Image.findByClosestTime = async function (date, options) {
     const sqlDate = dateformat(date, "yyyy-mm-dd HH:MM:ss", true)
     const number = options.number || 5
     const flag   = options.flag || "" 
+    
     const label  = options.filters.label
+    const camera = options.filters.camera 
+    const minstars=options.filters.minstars
 
     const query = 
     `SELECT * FROM (
       ( SELECT *, TIMESTAMPDIFF(SECOND, '${sqlDate}', date) AS diff
           FROM images WHERE date >= '${sqlDate}'
           ${label ? `AND label = '${label}'` : ""}
+          ${camera ? `AND camera = '${camera}'` : ""}
+          ${minstars ? `AND stars >= '${minstars}'` : ""}
           ORDER BY date ASC LIMIT ${(flag==="BEFORE")? 1 : number}
       ) UNION ( 
         SELECT *, TIMESTAMPDIFF(SECOND, '${sqlDate}', date) AS diff
           FROM images where date < '${sqlDate}'
           ${label ? `AND label = '${label}'` : ""}
+          ${camera ? `AND camera = '${camera}'` : ""}
+          ${minstars ? `AND stars >= '${minstars}'` : ""}
           ORDER BY date DESC LIMIT ${(flag==="AFTER")? 0 : number}
       )
     ) foo

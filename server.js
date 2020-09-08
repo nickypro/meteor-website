@@ -82,7 +82,7 @@ app.get(path.join(homepage + '/api/images-by-date'), async (req, res) => {
     const filters = {}
     if (label) filters.label = label 
     if (camera) filters.camera = camera 
-    if (minstars) filters.stars = {[Op.gte]: minstars};
+    if (minstars) filters.minstars = minstars;
 
     //look through database for the closest 
     const listOfImages = await Image.findByClosestTime( time, {number, flag, filters })
