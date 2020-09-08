@@ -76,10 +76,12 @@ app.get(path.join(homepage + '/api/images-by-date'), async (req, res) => {
 
     //add filters (labels, minstars, etc...)
     const label = req.query.label
+    const camera = req.query.camera
     const minstars = Number(req.query.minstars) || 0
     
     const filters = {}
     if (label) filters.label = label 
+    if (camera) filters.camera = camera 
     if (minstars) filters.stars = {[Op.gte]: minstars};
 
     //look through database for the closest 
@@ -102,11 +104,13 @@ app.get(path.join(homepage + '/api/images-by-stars'), async (req, res) => {
     console.log(req.query)
     const page = req.query.page ? req.query.page : 0  
     const label = req.query.label
+    const camera = req.query.camera
     const minstars = Number(req.query.minstars) || 0
     const number = req.query.number ? req.query.number : DEFAULT_NUMBER
 
     const whereQuery = {}
     if (label) whereQuery.label = label
+    if (camera) whereQuery.camera = camera
     if (minstars) whereQuery.stars = {[Op.gte]: minstars};
 
     const images = await Image.findAll({ 
