@@ -128,11 +128,11 @@ Image.findByClosestTime = async function (date, options) {
     const query = 
     `SELECT * FROM (
       ( SELECT *, TIMESTAMPDIFF(SECOND, '${sqlDate}', date) AS diff
-          FROM images WHERE date >= '${sqlDate}'
+          FROM images WHERE date > '${sqlDate}'
           ${label ? `AND label = '${label}'` : ""}
           ${camera ? `AND camera = '${camera}'` : ""}
           ${minstars ? `AND stars >= '${minstars}'` : ""}
-          ORDER BY date ASC LIMIT ${(flag==="BEFORE")? 1 : number}
+          ORDER BY date ASC LIMIT ${(flag==="BEFORE")? 0 : number}
       ) UNION ( 
         SELECT *, TIMESTAMPDIFF(SECOND, '${sqlDate}', date) AS diff
           FROM images where date < '${sqlDate}'
@@ -143,7 +143,7 @@ Image.findByClosestTime = async function (date, options) {
       )
     ) foo
     ORDER BY ABS(diff)
-    LIMIT ${number-0+1};`
+    LIMIT ${number-0};`
 
     let array = await sequelize.query(query)
     return array;

@@ -33,7 +33,7 @@ const MeteorImageSearch = (props) => {
   const [carouselRef, setCarouselRef] = React.useState();
   
   const [state, setState] = React.useState({
-    selectedDate: null,
+    selectedDate: new Date(),
     page: 0,
     labelFilter: "",
     minStars: 0,
@@ -49,6 +49,7 @@ const MeteorImageSearch = (props) => {
   const getImages = async (options = {}) => {
     let query = ""
     let api = ""
+    let concat = false
     
     switch (options.flag) {
       case "EARLIER":
@@ -56,7 +57,7 @@ const MeteorImageSearch = (props) => {
         api = `images-by-date`
         query = `before=${minDate}&`
         setState({...state, selectedDate: minDate})
-        carouselRef.slickGoTo(images.length)
+        concat="BEFORE"
         break;
 
       case "LATER":
@@ -64,7 +65,7 @@ const MeteorImageSearch = (props) => {
         api = `images-by-date`
         query = `after=${maxDate}&`
         setState({...state, selectedDate: maxDate})
-        carouselRef.slickGoTo(1)
+        concat="AFTER"
         break;
 
       case "DATE_CHANGE":
@@ -103,11 +104,11 @@ const MeteorImageSearch = (props) => {
       query += `minstars=${useMinStarsFilter}&`
     }
 
-    fetchImages(api, query)
+    fetchImages(api, query, concat)
   }
 
   //get data about images 
-  async function fetchImages(api, query = "") {
+  async function fetchImages(api, query = "", concat = false) {
   try {
     //request data from /api/<chosen api>?querydata=data
     console.log(`Getting from ${api} with ?${query}`)
@@ -119,20 +120,29 @@ const MeteorImageSearch = (props) => {
     
     } else {
       //if successful request, set carousel to use new images
-      let list = response.data;
+      let loadedList = response.data;
+      let newList
 
-      if (list.length & list.length > 0) {
-      list = list.sort((img1, img2) => 
-        Number(new Date(img1.date)) - Number(new Date(img2.date)) 
-      )
-      const minDate = list[0].date
-      const maxDate = list[list.length-1].date
-      console.log("min date: ", minDate)
-      console.log("max date: ", maxDate)
-      setListProperties({...state, minDate, maxDate})
+      if (!concat) newList = loadedList
+      if (concat==="BEFORE") newList = [...loadedList, ...images]
+      if (concat==="AFTER") newList = [...images, ...loadedList]
+
+      if (newList.length & newList.length > 0) {
+        newList = newList.sort((img1, img2) => 
+          Number(new Date(img1.date)) - Number(new Date(img2.date)) 
+        )
+      
+        const minDate = newList[0].date
+        const maxDate = newList[newList.length-1].date
+      
+        console.log("min date: ", minDate)
+        console.log("max date: ", maxDate)
+      
+        setListProperties({...state, minDate, maxDate})
+      
       } 
 
-      setImages(list)
+      setImages(newList)
     }
   } catch(err) {
     console.error(err.message)

@@ -90,6 +90,9 @@ app.get(path.join(homepage + '/api/images-by-date'), async (req, res) => {
       return res.send("Could not get data") 
     }
     console.log(`Found ${listOfImages[0].length} images closest to ${time}`)
+    console.log(listOfImages[0].sort((img1, img2) => 
+      Number(new Date(img1.date)) - Number(new Date(img2.date)) 
+    ))
     res.json(listOfImages[0])
   
     // Handle Errors
