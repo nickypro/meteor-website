@@ -127,20 +127,13 @@ const MeteorImageSearch = (props) => {
       if (concat==="BEFORE") newList = [...loadedList, ...images]
       if (concat==="AFTER") newList = [...images, ...loadedList]
 
-      if (newList.length & newList.length > 0) {
-        newList = newList.sort((img1, img2) => 
-          Number(new Date(img1.date)) - Number(new Date(img2.date)) 
-        )
-      
-        const minDate = newList[0].date
-        const maxDate = newList[newList.length-1].date
-      
-        console.log("min date: ", minDate)
-        console.log("max date: ", maxDate)
-      
-        setListProperties({...state, minDate, maxDate})
-      
-      } 
+      const minDate = newList[0].date
+      const maxDate = newList[newList.length-1].date
+    
+      console.log("min date: ", minDate)
+      console.log("max date: ", maxDate)
+    
+      setListProperties({...listProperties, minDate, maxDate})
 
       setImages(newList)
     }
@@ -235,26 +228,33 @@ const MeteorImageSearch = (props) => {
     getImages()
   }, [])
 
-  //on images change, move carousel to closest value
-  useEffect(() => {
+  function changeIndexToClosest() {
+    
     if (!images) return;
     if (!state.selectedDate) return;
-    
+    const selectedDate = new Date(state.selectedDate); 
+
+    const diff = (t) => Math.abs( Number(selectedDate) - Number(new Date(t)) ); 
+
     //get the index of the closest value
     let minIndex = 0;
-    for (let i in images) {
-      if (Math.abs(images[i].diff) < Math.abs(images[minIndex].diff)) {
-        minIndex = i
+      for (let i in images) {
+        if ( diff(images[i].date) < diff(images[minIndex].date) ) {
+          minIndex = i
+        }
       }
-    }
-    
-    //move to this index (and add 1 due to offset from buttons)
-    setTimeout(() => {
-      if (!carouselRef) return;
-      carouselRef.slickGoTo(minIndex-0+1)
-    }, 200);
+      
+      //move to this index (and add 1 due to offset from buttons)
+      setTimeout(() => {
+        if (!carouselRef) return;
+        carouselRef.slickGoTo(minIndex-0+1)
+      }, 200);
+  }
 
-  }, [images])
+  //on images change, move carousel to closest value
+  useEffect(() => 
+    changeIndexToClosest()
+  , [images])
 
   // function control for buttons 
   function getEarlier() {
