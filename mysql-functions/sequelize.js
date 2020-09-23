@@ -67,7 +67,7 @@ const LabelPoints = sequelize.define('image_points', {
   },
   filePath: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   meteor: {
     type: Sequelize.INTEGER,
