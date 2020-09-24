@@ -21,7 +21,7 @@ const MeteorImageCard = (props) => {
     
     <div style={{fontSize: "1.5rem", display: "flex", justifyContent: "space-between"}}>
       <span style={{textAlign: "left" }}> {dateFormat(props.data.date, "d mmm yyyy")} </span>
-      <span style={{textAlign: "right"}}> {dateFormat(props.data.date, "hh:MM:ss")} </span>
+      <span style={{textAlign: "right"}}> {dateFormat(props.data.date, "HH:MM:ss")} </span>
     </div>
 
     <Card style={cardStyling}>
