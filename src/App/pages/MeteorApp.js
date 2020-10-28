@@ -34,6 +34,9 @@ const App = () => {
 
   const [visibleSet, setVisibleSet] = React.useState(new Set())
 
+  // this keeps an eye on the scrolling of the user
+  // if a new section is visible or no longer visible
+  // then the section is added or removes from the list
   function handleVisChange(name, isVisible) {
     console.log(name, isVisible)
     const tempSet = visibleSet
@@ -47,7 +50,7 @@ const App = () => {
   }
 
   React.useEffect(() => {
-
+    // render the static content split into blocks by ---------
     fetch(contentDataPath)
       .then(response => {
         return response.text()
@@ -61,6 +64,7 @@ const App = () => {
       
       })
     
+    // render the intro static content above the images 
     fetch(introDataPath)
       .then(response => {
         return response.text()
@@ -75,8 +79,10 @@ const App = () => {
   return (
   <main>
     <Background />
+    {/* The dots that track scrolling in sections of the page */}
     <PageDots pages={subsections} visible={visibleSet}/>
     
+    {/* The top section of the page*/}
     <ScrollElement name="title" onChange={handleVisChange}>
       <div className="root__content">
         <h1 style={{textAlign: "center", fontSize: "4rem"}}>
@@ -88,12 +94,14 @@ const App = () => {
       </div>
     </ScrollElement>
 
+    {/* the introductionary static content*/}
     <ScrollElement name="intro" onChange={handleVisChange}>
       <Card style={cardStyling}>
         <article dangerouslySetInnerHTML={{__html: intro}}/>
       </Card>
     </ScrollElement>
 
+    {/* The actual images viewer of the page*/}
     <ScrollElement name="meteor-images" onChange={handleVisChange} id="meteor-images" >
       <MeteorImageSearch 
         userMeteorInfo={userMeteorInfo} 
@@ -102,6 +110,7 @@ const App = () => {
       />
     </ScrollElement>
     
+    {/* The static content at the end of the page */}
     {contentList.map(content =>
     <ScrollElement name={ getId(content) } onChange={handleVisChange}>
       <Card style={cardStyling}>
