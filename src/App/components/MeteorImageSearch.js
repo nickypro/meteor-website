@@ -312,7 +312,7 @@ const MeteorImageSearch = (props) => {
         
         {/** Filter by likes ("stars") */}
         <label  className="options-label">
-          Min Stars
+          Popularity
           <input 
             type="number" 
             placeholder="0 (show all)" 
