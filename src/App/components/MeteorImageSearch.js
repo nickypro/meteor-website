@@ -278,24 +278,32 @@ const MeteorImageSearch = (props) => {
   return (
   <>
     <div className="root__content meteor-images-search" style={{backgroundColor: "rgba(3, 20, 38, 0.2)", width: "100vw"}}>
+      {/* Title - If no date is selected, just show images in order of likes ("stars") */}
       <h1 style={{margin: "0.5rem"}}>
         {state.selectedDate ? `Search - ${state.selectedDate}` : "Featured Images"}
       </h1>
 
       <Card style={cardStyling}>
         <span>Options </span>
+        {/* select the date. Here dots refers to dots under dates which have images */}
         <DatePicker 
           value={state.selectedDate} 
           onChange={handleDateChange}
           dotsUrl={`${apiUrl}days-with-data`}
         />
+        
+        {/* Filter by label (meteor, aircraft, ...)*/}
         <LabelPicker value={state.labelFilter} onChange={handleLabelFilterChange} />
+        
+        {/* Filter by camera */}
         <Picker 
           value={state.cameraFilter}
           onChange={handleCameraFilterChange}
           choices={cameras}
           placeholder={"Filter by Camera"}
         />
+        
+        {/** Filter by likes ("stars") */}
         <label  className="options-label">
           Min Stars
           <input 
