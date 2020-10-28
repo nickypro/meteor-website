@@ -5,6 +5,30 @@ import NativeSelect from '@material-ui/core/NativeSelect'
 import Button from '@material-ui/core/Button'
 import Send from '@material-ui/icons/Send'
 
+/* pick from a dropdown
+If you want to make a new filter:
+const LabelPicker = (props) => {
+  return <Picker 
+    value={ currentDropdownValueVariable }
+    onChange={ (newValue) => { 
+      #insert-callback-function-here 
+    }}
+    choices={["List", "Of", "Labels"]}
+    placeholder={"Choose a Label"}
+  />
+
+Example Usage:
+<Picker 
+    imageId={props.imageId} 
+    value={props.value}
+    onChange={props.onChange}
+    submit={props.submit}
+    disabled={props.disabled}
+    choices={labels}
+    placeholder={"Choose a Label"}
+/>
+*/
+
 const Picker = (props) => {
   const [localValue, setLocalValue] = React.useState("")
   const [value, setValue] = (props.value !== undefined) ? [props.value, props.setValue] : [localValue, setLocalValue]
