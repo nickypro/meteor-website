@@ -85,19 +85,6 @@ const App = () => {
   <main>
     <Background />
     {/* The dots that track scrolling in sections of the page */}
-    <PageDots pages={subsections} visible={visibleSet}/>
-    
-    {/* The top section of the page*/}
-    <ScrollElement name="title" onChange={handleVisChange}>
-      <div className="root__content">
-        <h1 style={{textAlign: "center", fontSize: "4rem"}}>
-          {config.title || "Meteor Images"}
-        </h1>
-        <ScrollLink to={subsections[1].id} smooth={true} duration={500}>
-          <h1 className="scroll-down-icon"> &#709; </h1>
-        </ScrollLink>
-      </div>
-    </ScrollElement>
 
     {/* The actual images viewer of the page*/}
     <ScrollElement name="meteor-images" onChange={handleVisChange} id="meteor-images" >
@@ -108,23 +95,6 @@ const App = () => {
       />
     </ScrollElement>
     
-    {/* the introductionary static content*/}
-    {introList.map(content =>
-    <ScrollElement name={ getId(content) } onChange={handleVisChange}>
-      <Card style={cardStyling}>
-        <article dangerouslySetInnerHTML={{__html: content}}/>
-      </Card>
-    </ScrollElement>
-    )}
-
-    {/* The static content at the end of the page */}
-    {contentList.map(content =>
-    <ScrollElement name={ getId(content) } onChange={handleVisChange}>
-      <Card style={cardStyling}>
-        <article dangerouslySetInnerHTML={{__html: content}}/>
-      </Card>
-    </ScrollElement>
-    )}
 
   </main>
   )
