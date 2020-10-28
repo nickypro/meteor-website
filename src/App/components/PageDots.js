@@ -9,6 +9,18 @@ const pagesToDots = (pages, visible) => {
   )
 }
 
+/*
+Usage:
+<PageDots 
+  pages=["List", "Of", "Pages or Sections", "Visible"]
+  visible=["Visible"]
+/>
+
+this is handled by ScrollElement
+*/
+
+const HIDETEXTWIDTH = 1000 // px
+
 const PageDots = (props) => {
   const [hideText, setHideText] = React.useState(false)
   const [dots, setDots] = React.useState( pagesToDots(props.pages, props.visible) )
@@ -16,7 +28,8 @@ const PageDots = (props) => {
   useScrollPosition( ({ prevPos, currPos }) => {
     let yNew = - currPos.y;
     
-    if (window.innerWidth > 1000 | yNew < 10) {
+    // hide text on small screens when we scroll down
+    if (window.innerWidth > HIDETEXTWIDTH | yNew < 10) {
       if (hideText)  setHideText(false)
 
     } else {
@@ -31,6 +44,7 @@ const PageDots = (props) => {
 
   return (
   <div className={"side-dot-container " + (hideText && " side-dots-mobile ") }>
+    {/** List all the dots and make them clickable */}
     {dots.map((dot, index) =>
       <div key={`dot_${index}`}>
         <ScrollLink to={dot.id} smooth={true} duration={500} offset={hideText ? -30 : 0}>
