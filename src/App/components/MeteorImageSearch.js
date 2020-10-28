@@ -28,6 +28,11 @@ function isValidDate(d) {
   return d instanceof Date && !isNaN(d);
 }
 
+// The main control for searching for images
+// handles:
+//   - alter the properties we use to ask for data
+//   - send requests when we need new data
+
 const MeteorImageSearch = (props) => {
   const [images, setImages] = React.useState([])
   const [carouselRef, setCarouselRef] = React.useState();
@@ -324,6 +329,7 @@ const MeteorImageSearch = (props) => {
           getEarlier={getEarlier}
           getLater={getLater}
           userMeteorInfo={props.userMeteorInfo}
+          setDate={(selectedDate) => setState({...state, selectedDate})}
           toggleStar={toggleStar}
           sendLabel={sendLabel}
         />
