@@ -26,11 +26,11 @@ const App = () => {
   const [userMeteorInfo, setUserMeteorInfo, toggleStar, setLabel] = 
     useLocaleStateUserMeteorInfo("user_selections");
 
-  const [intro, setIntro] = React.useState("Loading content")
   const introDataPath   = path.join(homepage, `/home/intro.md`)
-  
-  const [contentList, setContentList] = React.useState(["Loading content"])
   const contentDataPath = path.join(homepage, `/home/content.md`)
+  
+  const [introList, setIntroList] = React.useState(["Loading intro content"])  
+  const [contentList, setContentList] = React.useState(["Loading content"])
 
   const [visibleSet, setVisibleSet] = React.useState(new Set())
 
@@ -69,9 +69,14 @@ const App = () => {
       .then(response => {
         return response.text()
       })
-      .then(text => 
-        setIntro( marked(text) ) 
-      )
+      
+      .then(text => {
+        const blocks = text.split(/\n(?=.+\n-------+)/)
+          .filter(str => str.length > 1)
+          .map(text => marked(text))
+
+        setIntroList( blocks ) 
+      })
     
     },[]
   )
@@ -104,11 +109,13 @@ const App = () => {
     </ScrollElement>
     
     {/* the introductionary static content*/}
-    <ScrollElement name="intro" onChange={handleVisChange}>
+    {introList.map(content =>
+    <ScrollElement name={ getId(content) } onChange={handleVisChange}>
       <Card style={cardStyling}>
-        <article dangerouslySetInnerHTML={{__html: intro}}/>
+        <article dangerouslySetInnerHTML={{__html: content}}/>
       </Card>
     </ScrollElement>
+    )}
 
     {/* The static content at the end of the page */}
     {contentList.map(content =>
