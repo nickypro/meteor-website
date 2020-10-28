@@ -1,3 +1,12 @@
+Help searching for meteors
+-----------------------------
+
++ When you search for a time, the system uses your local time, not UTC.
++ Some images are labelled as meteors or aircraft, and you can select only images with a certain label.  Note, however, that not all meteors are labelled as meteors.  A good way to find interesting images is to select by "popularity".
++ Filter by camera: at the moment we have two cameras both at Dunsink Observatory.  One is pointed to the West and the other is an all-sky camera which is not as sensitive and only catches the brightest meteors.
++ Popularity: any image that the meteor-detection software finds interesting is given +1 popularity.  Any image that has been "starred" by a website visitor also gets +1 popularity.  A higher popularity number is a good way to find the best images.
+
+
 Introduction and History
 -----------------------------
 

@@ -5,8 +5,11 @@
     "section": "Images",
     "id": "meteor-images"
   },{
+    "section": "Help",
+    "id": "help-searching-for-meteors"
+  },{
     "section": "Introduction",
-    "id": "intro"
+    "id": "introduction-and-history"
   },{
     "section": "Instrumentation",
     "id": "instrumentation"
