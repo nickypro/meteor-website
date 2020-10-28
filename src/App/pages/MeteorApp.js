@@ -94,13 +94,6 @@ const App = () => {
       </div>
     </ScrollElement>
 
-    {/* the introductionary static content*/}
-    <ScrollElement name="intro" onChange={handleVisChange}>
-      <Card style={cardStyling}>
-        <article dangerouslySetInnerHTML={{__html: intro}}/>
-      </Card>
-    </ScrollElement>
-
     {/* The actual images viewer of the page*/}
     <ScrollElement name="meteor-images" onChange={handleVisChange} id="meteor-images" >
       <MeteorImageSearch 
@@ -110,6 +103,13 @@ const App = () => {
       />
     </ScrollElement>
     
+    {/* the introductionary static content*/}
+    <ScrollElement name="intro" onChange={handleVisChange}>
+      <Card style={cardStyling}>
+        <article dangerouslySetInnerHTML={{__html: intro}}/>
+      </Card>
+    </ScrollElement>
+
     {/* The static content at the end of the page */}
     {contentList.map(content =>
     <ScrollElement name={ getId(content) } onChange={handleVisChange}>
