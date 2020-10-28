@@ -58,7 +58,7 @@ const MeteorImageSearch = (props) => {
     
     switch (options.flag) {
       case "EARLIER":
-        const minDate = listProperties.minDate || images[0].date
+        const minDate = listProperties.minDate || images[images.length-1].date 
         api = `images-by-date`
         query = `before=${minDate}&`
         setState({...state, selectedDate: minDate})
@@ -66,7 +66,7 @@ const MeteorImageSearch = (props) => {
         break;
 
       case "LATER":
-        const maxDate = listProperties.maxDate || images[images.length-1].date
+        const maxDate = listProperties.maxDate || images[0].date
         api = `images-by-date`
         query = `after=${maxDate}&`
         setState({...state, selectedDate: maxDate})
@@ -125,7 +125,9 @@ const MeteorImageSearch = (props) => {
     
     } else {
       //if successful request, set carousel to use new images
+      // reverse chronological order
       let loadedList = response.data.reverse();
+      loadedList = loadedList.sort((a, b) => new Date(b.date) - new Date(a.date) )
       let newList
 
       if (!concat) newList = loadedList
