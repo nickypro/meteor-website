@@ -8,14 +8,15 @@ import MeteorImageCard from './MeteorImageCard';
 import Button from '@material-ui/core/Button';
 import ListDialog from './ListDialog'
 
-const TRANSITION_DURATION = 100;
 
 {/* Turns a list of images into a horizontally scrolling list of cards*/}
 const ImageCarousel = (props) => {
+  const TRANSITION_DURATION = ( window && window.innerWidth < 800 ) ? 100 : 0;
+
   const [index, setIndex] = useState(1)
   const [ref, setRef] = useState({})
   const [listOpen, setListOpen] = useState(false)
-  const [delay, setDelay] = useState(0)
+  const [delay, setDelay] = useState(TRANSITION_DURATION)
 
   const handleIndexChange = (event, newIndex) => {
     console.log(newIndex)  
