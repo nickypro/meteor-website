@@ -17,7 +17,13 @@ const ImageCarousel = (props) => {
   const [listOpen, setListOpen] = useState(false)
   const [delay, setDelay] = useState(0)
 
-  const handleIndexChange = (newIndex) => {
+  const handleIndexChange = (event, newIndex) => {
+    console.log(newIndex)  
+    setIndex(newIndex)
+    ref.slickGoTo(newIndex)
+  }
+
+  const onIndexChange = (newIndex) => {
     console.log(newIndex)  
     setIndex(newIndex)
 
@@ -47,7 +53,7 @@ const ImageCarousel = (props) => {
   return (
   <>
   <Carousel  {...carouselOptions} 
-    afterChange={handleIndexChange}
+    afterChange={onIndexChange}
     ref={carousel => {
       setRef(carousel); 
       props.setCarouselRef(carousel)
@@ -80,6 +86,7 @@ const ImageCarousel = (props) => {
     }
     
   </Carousel>
+  {/** Slider at the bottom to quickly scroll through the images */}
   <Slider 
     className="carousel-slider"
     min={0}
