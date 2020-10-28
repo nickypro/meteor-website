@@ -23,9 +23,9 @@ const ImageCarousel = (props) => {
 
     // change date only if swiping sideways by one image 
     // this prevents other precesses from changing it
-    if (0 < newIndex & Math.abs(newIndex - index) === 1 & newIndex <= props.images.length) {
+    if (0 <= newIndex & Math.abs(newIndex - index) === 1 & newIndex < props.images.length) {
 
-      const date = props.images[newIndex-1].date
+      const date = props.images[newIndex].date
       console.log(`DATE CHANGE: ${date} at index ${newIndex}`)
       props.setDate(date)
     }
@@ -53,19 +53,6 @@ const ImageCarousel = (props) => {
       props.setCarouselRef(carousel)
     }}
     >
-    
-    {/* "Load Earlier" button*/}
-    {props.getEarlier && 
-    <div>
-    <div className="center-flex">
-      <Card style={cardStyling}>
-        <button className="slick-card-button" onClick={props.getEarlier}>
-          Load Earlier
-        </button>
-      </Card>
-    </div>
-    </div>
-    }
 
     {/* List meteor images */}
     {props.images.map((item, index) => (
@@ -79,19 +66,19 @@ const ImageCarousel = (props) => {
       />
     ))}
 
-    {/* "Load Later" button */}
-    {props.getLater && 
+    {/* "Load Earlier" button*/}
+    {props.getEarlier && 
     <div>
     <div className="center-flex">
       <Card style={cardStyling}>
-        <button className="slick-card-button" onClick={props.getLater}>
-          Load Later
+        <button className="slick-card-button" onClick={props.getEarlier}>
+          Load Earlier
         </button>
       </Card>
     </div>
     </div>
     }
-
+    
   </Carousel>
   <Slider 
     className="carousel-slider"

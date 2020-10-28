@@ -125,15 +125,15 @@ const MeteorImageSearch = (props) => {
     
     } else {
       //if successful request, set carousel to use new images
-      let loadedList = response.data;
+      let loadedList = response.data.reverse();
       let newList
 
       if (!concat) newList = loadedList
-      if (concat==="BEFORE") newList = [...loadedList, ...images]
-      if (concat==="AFTER") newList = [...images, ...loadedList]
+      if (concat==="BEFORE") newList = [...images, ...loadedList]
+      if (concat==="AFTER") newList = [...loadedList, ...images]
 
-      const minDate = newList[0].date
-      const maxDate = newList[newList.length-1].date
+      const maxDate = newList[0].date
+      const minDate = newList[newList.length-1].date
     
       console.log("min date: ", minDate)
       console.log("max date: ", maxDate)
@@ -252,7 +252,7 @@ const MeteorImageSearch = (props) => {
       //move to this index (and add 1 due to offset from buttons)
       setTimeout(() => {
         if (!carouselRef) return;
-        carouselRef.slickGoTo(minIndex-0+1)
+        carouselRef.slickGoTo(minIndex-0)
       }, 200);
   }
 
@@ -276,7 +276,7 @@ const MeteorImageSearch = (props) => {
       return getImages({flag: "LATER"})
     }
     else {
-      return changePageTo(state.page-0+1)
+      return changePageTo(state.page-0)
     }
   }
 
