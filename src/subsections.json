@@ -2,11 +2,11 @@
     "section": "Title",
     "id": "title"
   },{
-    "section": "Introduction",
-    "id": "intro"
-  },{
     "section": "Images",
     "id": "meteor-images"
+  },{
+    "section": "Introduction",
+    "id": "intro"
   },{
     "section": "Instrumentation",
     "id": "instrumentation"
