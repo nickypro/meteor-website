@@ -10,6 +10,27 @@ const imageDomain = config.imageDomain || window.location.origin
 const imagePath = config.imagePath || "images"
 const imgUrl = path.join(imageDomain, imagePath)
 
+/*
+// Usage: 
+<MeteorImageCard 
+  data={item} //object
+  starred={props.userMeteorInfo[item.fileName].starred} //boolean
+  userLabel={props.userMeteorInfo[item.fileName].label} //string
+  toggleStar={() => props.toggleStar(item.fileName)} //string
+  sendLabel={props.sendLabel} //callback function
+/>
+
+// we note that here,
+data = {
+  camera,
+  label,
+  filePath,
+  fileName,
+  ...
+}
+*/
+
+{/* A visual card that shows each meteor */}
 const MeteorImageCard = (props) => {
   const imgPath = path.join(imgUrl, props.data.filePath) 
   const cam = config.cameras[props.data.camera] || props.data.camera
@@ -19,15 +40,19 @@ const MeteorImageCard = (props) => {
   <div>
   <div style={{display: "flex", flexDirection: "column", margin: "1rem"}}>
     
+    {/* The text above that shows date and time */}
     <div style={{fontSize: "1.5rem", display: "flex", justifyContent: "space-between"}}>
       <span style={{textAlign: "left" }}> {dateFormat(props.data.date, "d mmm yyyy")} </span>
       <span style={{textAlign: "right"}}> {dateFormat(props.data.date, "HH:MM:ss")} </span>
     </div>
 
+    {/* The card itself with the image and more information */}
     <Card style={cardStyling}>
+    {/*Clicking the image links to the image on meteor-data.ap.dias.ie */}
     <a href={imgPath} target="_blank">
       <img className="meteor-image" src={imgPath}/>
     </a>
+    {/* The button that leaves a "like" on the image */}
     <button 
       id={`button_${props.data.fileName}`}
       className={`slick-star ${props.starred ? "starred" : ""}`} 
@@ -36,6 +61,7 @@ const MeteorImageCard = (props) => {
       > 
       &#9733;
     </button>
+    {/* Info on the image (current label) */}
     <div style={textMarginStyling}>
       <h2 style={{textAlign: "center"}}>{cam} - {label}</h2>
       <ul>
@@ -43,6 +69,7 @@ const MeteorImageCard = (props) => {
           <li>{props.data.info}</li>
         }
       </ul>
+      {/* We allow the user to input a label for the image */}
       <LabelPicker 
         imageId={props.data.fileName}
         submit={props.sendLabel}
